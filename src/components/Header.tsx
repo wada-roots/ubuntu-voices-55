@@ -10,31 +10,29 @@ import {
 const Header = () => {
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with Enhanced Kenyan Flag */}
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-8 relative overflow-hidden rounded-sm shadow-md border border-border">
-              <div className="h-1/3 bg-heritage-black"></div>
-              <div className="h-1/3 bg-heritage-red"></div>
-              <div className="h-1/3 bg-heritage-green"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-6 h-4 border border-card bg-card/80 rounded-full flex items-center justify-center">
-                  <div className="w-3 h-2 bg-heritage-red rounded-full"></div>
-                </div>
-              </div>
+          {/* Logo with Kenyan Flag */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <img 
+              src="/src/assets/kenyan-flag.png" 
+              alt="Kenyan Flag" 
+              className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
+            />
+            <div className="hidden sm:block">
+              <h1 className="text-lg sm:text-xl font-bold text-foreground">Ubuntu Voices</h1>
+              <p className="text-xs text-muted-foreground hidden md:block">Preserving Kenya's Heritage</p>
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Ubuntu Voices</h1>
-              <p className="text-xs text-muted-foreground">Preserving Kenya's Heritage</p>
+            <div className="block sm:hidden">
+              <h1 className="text-base font-bold text-foreground">Ubuntu Voices</h1>
             </div>
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-foreground hover:text-primary transition-colors story-link flex items-center gap-1">
+                <Button variant="ghost" className="text-foreground hover:text-primary transition-colors story-link flex items-center gap-1 text-sm xl:text-base">
                   Tribes <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -56,22 +54,22 @@ const Header = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <a href="/stories" className="text-foreground hover:text-primary transition-colors story-link">Stories</a>
-            <a href="/ubuntu-voices" className="text-foreground hover:text-primary transition-colors story-link">Elders</a>
-            <a href="/poetry" className="text-foreground hover:text-primary transition-colors story-link">Poetry</a>
-            <a href="/medicinal-plants" className="text-foreground hover:text-primary transition-colors story-link">Healing</a>
-            <a href="/heritage-map" className="text-foreground hover:text-primary transition-colors story-link">Places</a>
-            <a href="/heroes" className="text-foreground hover:text-primary transition-colors story-link">Heroes</a>
-            <a href="/learning-hub" className="text-foreground hover:text-primary transition-colors story-link">Learn</a>
+            <a href="/stories" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Stories</a>
+            <a href="/ubuntu-voices" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Elders</a>
+            <a href="/poetry" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Poetry</a>
+            <a href="/medicinal-plants" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Healing</a>
+            <a href="/heritage-map" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Places</a>
+            <a href="/heroes" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Heroes</a>
+            <a href="/learning-hub" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Learn</a>
           </nav>
 
           {/* Search and Menu */}
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon">
-              <Search className="h-5 w-5" />
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
+              <Search className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="lg:hidden h-8 w-8 sm:h-10 sm:w-10">
+              <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </div>
         </div>

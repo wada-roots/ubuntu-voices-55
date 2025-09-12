@@ -12,6 +12,11 @@ import HeritageMap from "./pages/HeritageMap";
 import Heroes from "./pages/Heroes";
 import LearningHub from "./pages/LearningHub";
 import NotFound from "./pages/NotFound";
+import Kikuyu from "./pages/tribes/Kikuyu";
+import Luo from "./pages/tribes/Luo";
+import Luhya from "./pages/tribes/Luhya";
+import Kalenjin from "./pages/tribes/Kalenjin";
+import Maasai from "./pages/tribes/Maasai";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +35,11 @@ const App = () => (
           <Route path="/heritage-map" element={<HeritageMap />} />
           <Route path="/heroes" element={<Heroes />} />
           <Route path="/learning-hub" element={<LearningHub />} />
+          <Route path="/tribes/kikuyu" element={<Kikuyu />} />
+          <Route path="/tribes/luo" element={<Luo />} />
+          <Route path="/tribes/luhya" element={<Luhya />} />
+          <Route path="/tribes/kalenjin" element={<Kalenjin />} />
+          <Route path="/tribes/maasai" element={<Maasai />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

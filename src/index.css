@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kenyan Heritage Design System - Earthy tones inspired by the African landscape */
+
+@layer base {
+  :root {
+    /* Base earthy palette */
+    --background: 32 25% 96%;
+    --foreground: 25 35% 15%;
+
+    /* Card tones */
+    --card: 35 20% 98%;
+    --card-foreground: 25 35% 15%;
+
+    --popover: 35 20% 98%;
+    --popover-foreground: 25 35% 15%;
+
+    /* Kenyan flag inspired primary - deep forest green */
+    --primary: 140 45% 25%;
+    --primary-foreground: 35 20% 98%;
+
+    /* Rich earth secondary - ochre/clay */
+    --secondary: 32 35% 85%;
+    --secondary-foreground: 25 35% 20%;
+
+    /* Muted earth tones */
+    --muted: 30 25% 88%;
+    --muted-foreground: 25 20% 45%;
+
+    /* Accent - warm Kenyan red */
+    --accent: 8 75% 55%;
+    --accent-foreground: 35 20% 98%;
+
+    /* Ubuntu wisdom gold */
+    --ubuntu: 45 85% 65%;
+    --ubuntu-foreground: 25 35% 15%;
+
+    /* Heritage colors */
+    --heritage-brown: 25 35% 35%;
+    --heritage-green: 140 45% 25%;
+    --heritage-red: 8 75% 55%;
+    --heritage-black: 25 35% 15%;
+
+    /* Gradients */
+    --gradient-earth: linear-gradient(135deg, hsl(32 35% 85%), hsl(45 85% 65%));
+    --gradient-heritage: linear-gradient(135deg, hsl(140 45% 25%), hsl(25 35% 35%));
+    --gradient-wisdom: linear-gradient(180deg, hsl(45 85% 65%), hsl(32 35% 85%));
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 35 20% 98%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 140 45% 25%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode with warmer earth tones */
+    --background: 25 35% 8%;
+    --foreground: 35 20% 95%;
+
+    --card: 25 35% 12%;
+    --card-foreground: 35 20% 95%;
+
+    --popover: 25 35% 12%;
+    --popover-foreground: 35 20% 95%;
+
+    --primary: 140 45% 65%;
+    --primary-foreground: 25 35% 8%;
+
+    --secondary: 25 25% 20%;
+    --secondary-foreground: 35 20% 95%;
+
+    --muted: 25 25% 18%;
+    --muted-foreground: 30 15% 65%;
+
+    --accent: 8 75% 65%;
+    --accent-foreground: 25 35% 8%;
+
+    --ubuntu: 45 85% 75%;
+    --ubuntu-foreground: 25 35% 8%;
+
+    --heritage-brown: 25 35% 75%;
+    --heritage-green: 140 45% 65%;
+    --heritage-red: 8 75% 65%;
+    --heritage-black: 35 20% 95%;
+
+    --gradient-earth: linear-gradient(135deg, hsl(25 25% 20%), hsl(45 65% 45%));
+    --gradient-heritage: linear-gradient(135deg, hsl(140 45% 35%), hsl(25 35% 25%));
+    --gradient-wisdom: linear-gradient(180deg, hsl(45 65% 45%), hsl(25 25% 20%));
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 35 20% 95%;
+
+    --border: 25 25% 18%;
+    --input: 25 25% 18%;
+    --ring: 140 45% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .animate-stagger {
+    animation-delay: calc(var(--stagger) * 0.1s);
+  }
+}

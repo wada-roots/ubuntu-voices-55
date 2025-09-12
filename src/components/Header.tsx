@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Search, ChevronDown } from "lucide-react";
+import kenyanFlag from "@/assets/kenyan-flag.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,8 +16,8 @@ const Header = () => {
           {/* Logo with Kenyan Flag */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <img 
-              src="/src/assets/kenyan-flag.png" 
-              alt="Kenyan Flag" 
+              src={kenyanFlag} 
+              alt="Kenyan Flag"
               className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
             />
             <div className="hidden sm:block">
@@ -36,21 +37,21 @@ const Header = () => {
                   Tribes <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg">
+              <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg z-50">
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/kikuyu" className="w-full cursor-pointer">Kikuyu</a>
+                  <a href="/tribes/kikuyu" className="w-full cursor-pointer text-foreground hover:bg-muted">Kikuyu</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/luo" className="w-full cursor-pointer">Luo</a>
+                  <a href="/tribes/luo" className="w-full cursor-pointer text-foreground hover:bg-muted">Luo</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/luhya" className="w-full cursor-pointer">Luhya</a>
+                  <a href="/tribes/luhya" className="w-full cursor-pointer text-foreground hover:bg-muted">Luhya</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/kalenjin" className="w-full cursor-pointer">Kalenjin</a>
+                  <a href="/tribes/kalenjin" className="w-full cursor-pointer text-foreground hover:bg-muted">Kalenjin</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/maasai" className="w-full cursor-pointer">Maasai</a>
+                  <a href="/tribes/maasai" className="w-full cursor-pointer text-foreground hover:bg-muted">Maasai</a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

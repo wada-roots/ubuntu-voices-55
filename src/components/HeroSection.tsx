@@ -33,11 +33,21 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start">
-              <Button variant="ubuntu" size="lg" className="group w-full sm:w-auto">
+              <Button 
+                variant="ubuntu" 
+                size="lg" 
+                className="group w-full sm:w-auto"
+                onClick={() => window.location.href = '/stories'}
+              >
                 <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
                 Listen to Stories
               </Button>
-              <Button variant="elder" size="lg" className="w-full sm:w-auto">
+              <Button 
+                variant="elder" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                onClick={() => window.location.href = '/ubuntu-voices'}
+              >
                 <Users className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Meet the Elders
               </Button>

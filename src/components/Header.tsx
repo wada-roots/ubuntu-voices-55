@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, Search, ChevronDown } from "lucide-react";
+import { Menu, Search, ChevronDown, X } from "lucide-react";
 import kenyanFlag from "@/assets/kenyan-flag.png";
 import {
   DropdownMenu,
@@ -9,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
@@ -69,11 +72,46 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
               <Search className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="lg:hidden h-8 w-8 sm:h-10 sm:w-10">
-              <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="lg:hidden h-8 w-8 sm:h-10 sm:w-10"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+              ) : (
+                <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
+              )}
             </Button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden border-t border-border bg-card/95 backdrop-blur-sm">
+            <nav className="container mx-auto px-3 sm:px-4 py-4 space-y-3">
+              {/* Mobile Tribes Dropdown */}
+              <div className="space-y-2">
+                <div className="font-medium text-foreground text-sm">Tribes</div>
+                <div className="pl-4 space-y-2">
+                  <a href="/tribes/kikuyu" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Kikuyu</a>
+                  <a href="/tribes/luo" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Luo</a>
+                  <a href="/tribes/luhya" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Luhya</a>
+                  <a href="/tribes/kalenjin" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Kalenjin</a>
+                  <a href="/tribes/maasai" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Maasai</a>
+                </div>
+              </div>
+              <a href="/stories" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Stories</a>
+              <a href="/ubuntu-voices" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Elders</a>
+              <a href="/poetry" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Poetry</a>
+              <a href="/medicinal-plants" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Healing</a>
+              <a href="/heritage-map" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Places</a>
+              <a href="/heroes" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Heroes</a>
+              <a href="/learning-hub" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Learn</a>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

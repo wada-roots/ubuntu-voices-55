@@ -3,6 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Play, Leaf, Search, Filter, Star, Clock } from "lucide-react";
 import { useState } from "react";
 import medicinalImage from "@/assets/medicinal-plants.jpg";
+import muthithiImage from "@/assets/muthithi-plant.jpg";
+import crotonImage from "@/assets/croton-plant.jpg";
+import leleshwaImage from "@/assets/leleshwa-plant.jpg";
+import sodomAppleImage from "@/assets/sodom-apple.jpg";
+import msaharatiImage from "@/assets/msaharati-plant.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -18,7 +23,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Generally safe, avoid during pregnancy",
     description: "A common shrub found in highland areas, traditionally used by Kikuyu healers for digestive issues and fever.",
-    image: medicinalImage
+    image: muthithiImage
   },
   {
     id: 2,
@@ -31,7 +36,7 @@ const plants = [
     difficulty: "Medium",
     safety: "External use only for wounds",
     description: "Sacred tree whose bark and leaves have powerful healing properties for external wounds and lung conditions.",
-    image: medicinalImage
+    image: crotonImage
   },
   {
     id: 3,
@@ -44,7 +49,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Safe for all ages",
     description: "Aromatic shrub highly valued by Maasai communities for treating respiratory ailments and cleansing ceremonies.",
-    image: medicinalImage
+    image: leleshwaImage
   },
   {
     id: 4,
@@ -70,7 +75,7 @@ const plants = [
     difficulty: "Medium",
     safety: "Use sparingly, can be toxic in large amounts",
     description: "Thorny plant with powerful alkaloids, used carefully by traditional healers for pain relief.",
-    image: medicinalImage
+    image: sodomAppleImage
   },
   {
     id: 6,
@@ -83,7 +88,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Safe for regular use",
     description: "Sacred basil used in coastal communities for both physical healing and spiritual practices.",
-    image: medicinalImage
+    image: msaharatiImage
   }
 ];
 

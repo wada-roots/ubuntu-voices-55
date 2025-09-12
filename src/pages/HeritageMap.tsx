@@ -3,6 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Info, Mountain, Users, Calendar, Camera } from "lucide-react";
 import { useState } from "react";
 import sacredImage from "@/assets/sacred-places.jpg";
+import mountKenyaImage from "@/assets/mount-kenya.jpg";
+import lakeNaivashaImage from "@/assets/lake-naivasha.jpg";
+import kayaForestImage from "@/assets/kaya-forest.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -20,7 +23,7 @@ const places = [
     modernName: "Mount Kenya",
     ceremonies: ["Prayer ceremonies", "Initiation rites", "Harvest thanksgiving"],
     legends: "The mountain is believed to be the resting place of Ngai, who would descend to help his people during times of need.",
-    image: sacredImage,
+    image: mountKenyaImage,
     status: "UNESCO World Heritage Site"
   },
   {
@@ -36,7 +39,7 @@ const places = [
     modernName: "Lake Naivasha",
     ceremonies: ["Rain-making rituals", "Cleansing ceremonies", "Coming of age rites"],
     legends: "The lake spirits are said to control rainfall across the Rift Valley. Elders would offer sacrifices during droughts.",
-    image: sacredImage,
+    image: lakeNaivashaImage,
     status: "Ramsar Wetland Site"
   },
   {
@@ -52,7 +55,7 @@ const places = [
     modernName: "Kaya Kinondo Sacred Forest",
     ceremonies: ["Ancestral veneration", "Rain ceremonies", "Healing rituals"],
     legends: "The spirits of ancestors guard the forest. Breaking traditional laws results in supernatural punishment.",
-    image: sacredImage,
+    image: kayaForestImage,
     status: "UNESCO World Heritage Site"
   },
   {

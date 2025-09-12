@@ -34,6 +34,7 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+            <a href="/" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Home</a>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-foreground hover:text-primary transition-colors story-link flex items-center gap-1 text-sm xl:text-base">
@@ -91,6 +92,7 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden border-t border-border bg-card/95 backdrop-blur-sm">
             <nav className="container mx-auto px-3 sm:px-4 py-4 space-y-3">
+              <a href="/" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Home</a>
               {/* Mobile Tribes Dropdown */}
               <div className="space-y-2">
                 <div className="font-medium text-foreground text-sm">Tribes</div>

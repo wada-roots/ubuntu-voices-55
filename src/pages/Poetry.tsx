@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Mic, Music, Heart, Filter, Search } from "lucide-react";
 import { useState } from "react";
-import poetryImage from "@/assets/poetry-music.jpg";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -20,7 +20,7 @@ const poetryItems = [
     language: "Kikuyu/Swahili",
     occasion: "Community work",
     instruments: ["Traditional drums", "Clapping", "Vocal harmony"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const poetryItems = [
     language: "Maa",
     occasion: "Warrior ceremonies",
     instruments: ["Enkidiong (horn)", "Vocal chanting"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const poetryItems = [
     language: "Kiswahili",
     occasion: "Fishing ceremonies",
     instruments: ["Oud", "Kayamba", "Sea shells"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const poetryItems = [
     language: "Dholuo",
     occasion: "Ancestral ceremonies",
     instruments: ["Nyatiti", "Orutu", "Traditional drums"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const poetryItems = [
     language: "Turkana",
     occasion: "Storytelling gatherings",
     instruments: ["Wind instruments", "Vocal narration"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ const poetryItems = [
     language: "Kalenjin",
     occasion: "Athletic celebrations",
     instruments: ["Flutes", "Horn instruments", "Rhythmic chanting"],
-    image: poetryImage
+    image: "/images/poetry-music.jpg"
   }
 ];
 
@@ -127,7 +127,7 @@ const Poetry = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={poetryImage} 
+            src="/images/poetry-music.jpg" 
             alt="Traditional poetry and music"
             className="w-full h-full object-cover"
           />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, Search, ChevronDown, X } from "lucide-react";
-import kenyanFlag from "@/assets/kenyan-flag.png";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo with Kenyan Flag */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <img 
-              src={kenyanFlag} 
+              src="/images/kenyan-flag.png" 
               alt="Kenyan Flag"
               className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
             />

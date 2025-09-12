@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Volume2, BookOpen } from "lucide-react";
-import eldersImage from "@/assets/elders-storytelling.jpg";
+
 
 const FeaturedStory = () => {
   return (
@@ -22,7 +22,7 @@ const FeaturedStory = () => {
               {/* Image */}
               <div className="relative h-64 md:h-auto">
                 <img 
-                  src={eldersImage}
+                  src="/images/elders-storytelling.jpg"
                   alt="Elders sharing stories around fire"
                   className="w-full h-full object-cover"
                 />

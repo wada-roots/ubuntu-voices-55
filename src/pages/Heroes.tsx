@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Users, Calendar, Heart, Search, Filter } from "lucide-react";
 import { useState } from "react";
-import heroesImage from "@/assets/heroes-memorial.jpg";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -21,7 +21,7 @@ const heroes = [
     legacy: "Pioneer of women's leadership in anti-colonial resistance, symbol of Mijikenda unity",
     quote: "The land belongs to our ancestors, not to strangers from across the sea",
     historicalContext: "Led her people during the period of British coastal expansion, using traditional Giriama governance structures.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "First documented female resistance leader in Kenya"
   },
   {
@@ -38,7 +38,7 @@ const heroes = [
     legacy: "Symbol of Nandi resistance and spiritual leadership, his prophecies are still remembered",
     quote: "The iron snake will bring strangers who will rule over our children",
     historicalContext: "Resisted the Uganda Railway construction through Nandi territory, leading one of the longest resistances.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "Longest sustained resistance against colonial rule"
   },
   {
@@ -55,7 +55,7 @@ const heroes = [
     legacy: "Remembered as a forward-thinking leader who tried to navigate the changing world diplomatically",
     quote: "Let us learn the ways of these strangers, but not forget our own",
     historicalContext: "Lived during the arrival of the first European explorers and missionaries in Kikuyu territory.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "Bridge between traditional and colonial periods"
   },
   {
@@ -72,7 +72,7 @@ const heroes = [
     legacy: "Revered as the greatest Kamba prophetess, her predictions proved remarkably accurate",
     quote: "I see a great iron snake crossing our land, bringing people of different colors",
     historicalContext: "Lived during the height of Kamba long-distance trade, foreseeing major changes to come.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "Prophetic vision of colonial future"
   },
   {
@@ -89,7 +89,7 @@ const heroes = [
     legacy: "Keeper of traditional healing knowledge, symbol of cultural preservation",
     quote: "Our medicines have healed our people for generations, why abandon them now?",
     historicalContext: "Resisted colonial medical practices while maintaining traditional healing systems.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "Cultural preservation in healthcare"
   },
   {
@@ -106,7 +106,7 @@ const heroes = [
     legacy: "Pioneer of long-distance trade, bridge between communities",
     quote: "Trade brings people together, even those who speak different tongues",
     historicalContext: "Led Kamba trading expeditions far inland, establishing the community as master traders.",
-    image: heroesImage,
+    image: "/images/heroes-memorial.jpg",
     significance: "Economic pioneer and cultural bridge"
   }
 ];
@@ -141,7 +141,7 @@ const Heroes = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={heroesImage} 
+            src="/images/heroes-memorial.jpg" 
             alt="Heroes and freedom fighters"
             className="w-full h-full object-cover"
           />

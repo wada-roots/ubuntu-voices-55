@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Heart, Clock, Quote, Users, MapPin } from "lucide-react";
 import { useState } from "react";
-import eldersImage from "@/assets/elders-storytelling.jpg";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -18,7 +18,7 @@ const elders = [
     specialties: ["Traditional farming", "Kikuyu folklore", "Women's ceremonies"],
     interviewCount: 12,
     totalDuration: "3h 45min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const elders = [
     specialties: ["Warrior traditions", "Running culture", "Cattle keeping"],
     interviewCount: 8,
     totalDuration: "2h 30min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const elders = [
     specialties: ["Swahili poetry", "Maritime traditions", "Islamic culture"],
     interviewCount: 15,
     totalDuration: "4h 20min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const elders = [
     specialties: ["Traditional healing", "Maasai ceremonies", "Beadwork traditions"],
     interviewCount: 10,
     totalDuration: "3h 15min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ const elders = [
     specialties: ["Traditional music", "Oral history", "Luo customs"],
     interviewCount: 20,
     totalDuration: "5h 10min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   },
   {
     id: 6,
@@ -83,7 +83,7 @@ const elders = [
     specialties: ["Weather prediction", "Desert survival", "Turkana traditions"],
     interviewCount: 7,
     totalDuration: "2h 45min",
-    image: eldersImage
+    image: "/images/elders-storytelling.jpg"
   }
 ];
 
@@ -98,7 +98,7 @@ const UbuntuVoices = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={eldersImage} 
+            src="/images/elders-storytelling.jpg" 
             alt="Elders sharing wisdom"
             className="w-full h-full object-cover"
           />

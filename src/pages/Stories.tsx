@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Heart, Clock, Users, Filter, Search } from "lucide-react";
 import { useState } from "react";
-import storytellingImage from "@/assets/storytelling-circle.jpg";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -96,7 +96,7 @@ const Stories = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={storytellingImage} 
+            src="/images/storytelling-circle.jpg" 
             alt="Traditional storytelling circle"
             className="w-full h-full object-cover"
           />

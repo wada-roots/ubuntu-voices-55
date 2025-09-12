@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Clock, Heart, Quote, Users } from "lucide-react";
-import villageImage from "@/assets/village-landscape.jpg";
+
 
 const elderSpotlights = [
   {
@@ -36,7 +36,7 @@ const UbuntuCorner = () => {
       {/* Background */}
       <div className="absolute inset-0 opacity-5">
         <img 
-          src={villageImage}
+          src="/images/village-landscape.jpg"
           alt="Village landscape"
           className="w-full h-full object-cover"
         />

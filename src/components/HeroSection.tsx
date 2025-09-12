@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Play, Heart, Users } from "lucide-react";
 import CulturalCarousel from "./CulturalCarousel";
-import heroImage from "@/assets/hero-elder.jpg";
+
 
 const HeroSection = () => {
   return (
@@ -9,7 +9,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={heroImage} 
+          src="/images/hero-elder.jpg" 
           alt="Wise Kenyan elder sharing stories"
           className="w-full h-full object-cover"
         />

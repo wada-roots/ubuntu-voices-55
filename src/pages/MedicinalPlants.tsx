@@ -2,12 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Leaf, Search, Filter, Star, Clock } from "lucide-react";
 import { useState } from "react";
-import medicinalImage from "@/assets/medicinal-plants.jpg";
-import muthithiImage from "@/assets/muthithi-plant.jpg";
-import crotonImage from "@/assets/croton-plant.jpg";
-import leleshwaImage from "@/assets/leleshwa-plant.jpg";
-import sodomAppleImage from "@/assets/sodom-apple.jpg";
-import msaharatiImage from "@/assets/msaharati-plant.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -23,7 +17,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Generally safe, avoid during pregnancy",
     description: "A common shrub found in highland areas, traditionally used by Kikuyu healers for digestive issues and fever.",
-    image: muthithiImage
+    image: "/images/muthithi-plant.jpg"
   },
   {
     id: 2,
@@ -36,7 +30,7 @@ const plants = [
     difficulty: "Medium",
     safety: "External use only for wounds",
     description: "Sacred tree whose bark and leaves have powerful healing properties for external wounds and lung conditions.",
-    image: crotonImage
+    image: "/images/croton-plant.jpg"
   },
   {
     id: 3,
@@ -49,7 +43,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Safe for all ages",
     description: "Aromatic shrub highly valued by Maasai communities for treating respiratory ailments and cleansing ceremonies.",
-    image: leleshwaImage
+    image: "/images/leleshwa-plant.jpg"
   },
   {
     id: 4,
@@ -62,7 +56,7 @@ const plants = [
     difficulty: "Advanced",
     safety: "Consult healer for proper dosage",
     description: "Powerful medicinal root requiring careful preparation, traditionally used for serious health conditions.",
-    image: medicinalImage
+    image: "/images/medicinal-plants.jpg"
   },
   {
     id: 5,
@@ -75,7 +69,7 @@ const plants = [
     difficulty: "Medium",
     safety: "Use sparingly, can be toxic in large amounts",
     description: "Thorny plant with powerful alkaloids, used carefully by traditional healers for pain relief.",
-    image: sodomAppleImage
+    image: "/images/sodom-apple.jpg"
   },
   {
     id: 6,
@@ -88,7 +82,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Safe for regular use",
     description: "Sacred basil used in coastal communities for both physical healing and spiritual practices.",
-    image: msaharatiImage
+    image: "/images/msaharati-plant.jpg"
   }
 ];
 
@@ -126,9 +120,9 @@ const MedicinalPlants = () => {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={medicinalImage} 
-            alt="Traditional medicinal plants"
+        <img 
+          src="/images/medicinal-plants.jpg"
+          alt="Traditional medicinal plants"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-heritage-black/60"></div>

@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import storytellingCircle from "@/assets/storytelling-circle.jpg";
-import medicinalPlants from "@/assets/medicinal-plants.jpg";
-import poetryMusic from "@/assets/poetry-music.jpg";
-import sacredPlaces from "@/assets/sacred-places.jpg";
-import elderStorytelling from "@/assets/elders-storytelling.jpg";
 
 const CulturalCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -15,11 +10,11 @@ const CulturalCarousel = () => {
   const [showTranslation, setShowTranslation] = useState(false);
 
   const culturalImages = [
-    { src: storytellingCircle, alt: "Traditional storytelling circle" },
-    { src: medicinalPlants, alt: "Traditional medicinal plants" },
-    { src: poetryMusic, alt: "Poetry and traditional music" },
-    { src: sacredPlaces, alt: "Sacred cultural places" },
-    { src: elderStorytelling, alt: "Elders sharing wisdom" },
+    { src: "/images/storytelling-circle.jpg", alt: "Traditional storytelling circle" },
+    { src: "/images/medicinal-plants.jpg", alt: "Traditional medicinal plants" },
+    { src: "/images/poetry-music.jpg", alt: "Poetry and traditional music" },
+    { src: "/images/sacred-places.jpg", alt: "Sacred cultural places" },
+    { src: "/images/elders-storytelling.jpg", alt: "Elders sharing wisdom" },
   ];
 
   // Numbers 1-10 in different Kenyan languages

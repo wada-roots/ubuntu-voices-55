@@ -2,10 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Info, Mountain, Users, Calendar, Camera } from "lucide-react";
 import { useState } from "react";
-import sacredImage from "@/assets/sacred-places.jpg";
-import mountKenyaImage from "@/assets/mount-kenya.jpg";
-import lakeNaivashaImage from "@/assets/lake-naivasha.jpg";
-import kayaForestImage from "@/assets/kaya-forest.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -23,7 +19,7 @@ const places = [
     modernName: "Mount Kenya",
     ceremonies: ["Prayer ceremonies", "Initiation rites", "Harvest thanksgiving"],
     legends: "The mountain is believed to be the resting place of Ngai, who would descend to help his people during times of need.",
-    image: mountKenyaImage,
+    image: "/images/mount-kenya.jpg",
     status: "UNESCO World Heritage Site"
   },
   {
@@ -39,7 +35,7 @@ const places = [
     modernName: "Lake Naivasha",
     ceremonies: ["Rain-making rituals", "Cleansing ceremonies", "Coming of age rites"],
     legends: "The lake spirits are said to control rainfall across the Rift Valley. Elders would offer sacrifices during droughts.",
-    image: lakeNaivashaImage,
+    image: "/images/lake-naivasha.jpg",
     status: "Ramsar Wetland Site"
   },
   {
@@ -55,7 +51,7 @@ const places = [
     modernName: "Kaya Kinondo Sacred Forest",
     ceremonies: ["Ancestral veneration", "Rain ceremonies", "Healing rituals"],
     legends: "The spirits of ancestors guard the forest. Breaking traditional laws results in supernatural punishment.",
-    image: kayaForestImage,
+    image: "/images/kaya-forest.jpg",
     status: "UNESCO World Heritage Site"
   },
   {
@@ -71,7 +67,7 @@ const places = [
     modernName: "Menengai Crater",
     ceremonies: ["Warrior initiation", "Community assemblies", "Spiritual retreats"],
     legends: "The crater was formed by the gods as a meeting place. Steam from the crater carries prayers to the heavens.",
-    image: sacredImage,
+    image: "/images/sacred-places.jpg",
     status: "Protected Natural Monument"
   },
   {
@@ -87,7 +83,7 @@ const places = [
     modernName: "Kit Mikayi Rock",
     ceremonies: ["Marriage blessings", "Fertility rites", "Community prayers"],
     legends: "The rock is said to be the first wife of the Luo people, who was turned to stone to protect the community.",
-    image: sacredImage,
+    image: "/images/sacred-places.jpg",
     status: "Cultural Heritage Site"
   },
   {
@@ -103,7 +99,7 @@ const places = [
     modernName: "Lake Turkana",
     ceremonies: ["Fishing blessings", "Rain ceremonies", "Ancestral communication"],
     legends: "The lake appeared when ancestral spirits decided to provide water for their children in the desert.",
-    image: sacredImage,
+    image: "/images/sacred-places.jpg",
     status: "UNESCO World Heritage Site"
   }
 ];
@@ -119,7 +115,7 @@ const HeritageMap = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={sacredImage} 
+            src="/images/sacred-places.jpg" 
             alt="Sacred places of Kenya"
             className="w-full h-full object-cover"
           />

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Users, Download, Play, Search, GraduationCap } from "lucide-react";
 import { useState } from "react";
-import learningImage from "@/assets/learning-hub.jpg";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -19,7 +19,7 @@ const resources = [
     downloads: 1240,
     rating: 4.8,
     language: "English/Kikuyu",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const resources = [
     downloads: 2156,
     rating: 4.9,
     language: "Kiswahili/English",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const resources = [
     downloads: 876,
     rating: 4.7,
     language: "English",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const resources = [
     downloads: 654,
     rating: 4.6,
     language: "English",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ const resources = [
     downloads: 543,
     rating: 4.5,
     language: "English/Maa",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   },
   {
     id: 6,
@@ -89,7 +89,7 @@ const resources = [
     downloads: 432,
     rating: 4.8,
     language: "English",
-    image: learningImage
+    image: "/images/learning-hub.jpg"
   }
 ];
 
@@ -119,9 +119,9 @@ const LearningHub = () => {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={learningImage} 
-            alt="Learning and education"
+        <img 
+          src="/images/learning-hub.jpg"
+          alt="Learning and education"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-heritage-black/60"></div>

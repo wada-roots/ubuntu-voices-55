@@ -1,0 +1,286 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
+import { User } from "@supabase/supabase-js";
+import { PenTool, BookOpen, FileText, LogOut, Home } from "lucide-react";
+
+const AuthorsDashboard = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [contentType, setContentType] = useState("");
+  const [tribe, setTribe] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check authentication status
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session?.user) {
+          setUser(session.user);
+        } else {
+          setUser(null);
+          navigate("/auth");
+        }
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+      } else {
+        navigate("/auth");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        toast.error("Error signing out");
+      } else {
+        toast.success("Signed out successfully");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contentType) {
+      toast.error("Please select a content type");
+      return;
+    }
+
+    setIsLoading(true);
+    
+    // For now, we'll just show a success message
+    // In a real app, you'd save this to a submissions table
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast.success("Your submission has been sent for review!");
+      
+      // Reset form
+      setTitle("");
+      setContent("");
+      setContentType("");
+      setTribe("");
+    } catch (error) {
+      toast.error("Failed to submit content");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/images/kenyan-flag.png" 
+                alt="Kenyan Flag"
+                className="w-10 h-7 object-cover rounded-sm shadow-md border border-border"
+              />
+              <div>
+                <h1 className="text-xl font-bold text-foreground">Authors Dashboard</h1>
+                <p className="text-sm text-muted-foreground">Welcome, {user.user_metadata?.full_name || user.email}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" onClick={() => navigate("/")} className="flex items-center gap-2">
+                <Home className="h-4 w-4" />
+                Home
+              </Button>
+              <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2">
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-2">Share Your Cultural Heritage</h2>
+            <p className="text-muted-foreground">
+              Contribute to preserving Kenya's rich cultural heritage by sharing your stories, poems, and articles.
+              All submissions are reviewed before being published.
+            </p>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <PenTool className="h-5 w-5" />
+                Submit Content
+              </CardTitle>
+              <CardDescription>
+                Share your cultural knowledge with the Ubuntu Voices community
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="content-type">Content Type</Label>
+                    <Select value={contentType} onValueChange={setContentType}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select content type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="story">
+                          <div className="flex items-center gap-2">
+                            <BookOpen className="h-4 w-4" />
+                            Traditional Story
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="poem">
+                          <div className="flex items-center gap-2">
+                            <PenTool className="h-4 w-4" />
+                            Poetry
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="article">
+                          <div className="flex items-center gap-2">
+                            <FileText className="h-4 w-4" />
+                            Cultural Article
+                          </div>
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="tribe">Cultural Origin (Optional)</Label>
+                    <Select value={tribe} onValueChange={setTribe}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select tribe/community" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="kikuyu">Kikuyu</SelectItem>
+                        <SelectItem value="luo">Luo</SelectItem>
+                        <SelectItem value="luhya">Luhya</SelectItem>
+                        <SelectItem value="kalenjin">Kalenjin</SelectItem>
+                        <SelectItem value="maasai">Maasai</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="title">Title</Label>
+                  <Input
+                    id="title"
+                    type="text"
+                    placeholder="Enter the title of your content"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="content">Content</Label>
+                  <Textarea
+                    id="content"
+                    placeholder="Share your story, poem, or article here..."
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    required
+                    rows={12}
+                    className="resize-none"
+                  />
+                  <p className="text-sm text-muted-foreground">
+                    Write in English, Kiswahili, or your local language
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary">Under Review</Badge>
+                    <span className="text-sm text-muted-foreground">
+                      Content will be reviewed before publication
+                    </span>
+                  </div>
+                  <Button 
+                    type="submit" 
+                    disabled={isLoading}
+                    className="min-w-[120px]"
+                  >
+                    {isLoading ? "Submitting..." : "Submit"}
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Guidelines Section */}
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle>Submission Guidelines</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Content Requirements:</h4>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>Original content or traditional stories with proper attribution</li>
+                    <li>Culturally respectful and appropriate</li>
+                    <li>Well-written and engaging</li>
+                    <li>Relevant to Kenyan heritage and culture</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Review Process:</h4>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>Content reviewed within 3-5 business days</li>
+                    <li>Feedback provided if changes needed</li>
+                    <li>Published content credited to author</li>
+                    <li>Community engagement encouraged</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default AuthorsDashboard;

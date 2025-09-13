@@ -68,10 +68,17 @@ const Header = () => {
             <a href="/learning-hub" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Learn</a>
           </nav>
 
-          {/* Search and Menu */}
+          {/* Search and Author Login */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
               <Search className="h-4 w-4 sm:h-5 sm:w-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              className="hidden sm:flex items-center gap-1 text-xs xl:text-sm px-2 sm:px-3"
+              onClick={() => window.location.href = "/auth"}
+            >
+              Authors
             </Button>
             <Button 
               variant="ghost" 
@@ -111,6 +118,7 @@ const Header = () => {
               <a href="/heritage-map" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Places</a>
               <a href="/heroes" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Heroes</a>
               <a href="/learning-hub" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Learn</a>
+              <a href="/auth" className="block text-sm text-foreground hover:text-primary transition-colors py-2 border-t border-border pt-3 mt-3">Authors Portal</a>
             </nav>
           </div>
         )}

@@ -11,7 +11,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
-import { PenTool, BookOpen, FileText, LogOut, Home } from "lucide-react";
+import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle } from "lucide-react";
+
+interface ContentSubmission {
+  id: string;
+  title: string;
+  content: string;
+  content_type: string;
+  tribe?: string | null;
+  status: string;
+  review_notes?: string | null;
+  created_at: string;
+  updated_at: string;
+  user_id: string;
+}
 
 const AuthorsDashboard = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -20,6 +33,8 @@ const AuthorsDashboard = () => {
   const [content, setContent] = useState("");
   const [contentType, setContentType] = useState("");
   const [tribe, setTribe] = useState("");
+  const [submissions, setSubmissions] = useState<ContentSubmission[]>([]);
+  const [loadingSubmissions, setLoadingSubmissions] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +43,7 @@ const AuthorsDashboard = () => {
       (event, session) => {
         if (session?.user) {
           setUser(session.user);
+          loadSubmissions();
         } else {
           setUser(null);
           navigate("/auth");
@@ -39,6 +55,7 @@ const AuthorsDashboard = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user);
+        loadSubmissions();
       } else {
         navigate("/auth");
       }
@@ -46,6 +63,28 @@ const AuthorsDashboard = () => {
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  const loadSubmissions = async () => {
+    setLoadingSubmissions(true);
+    try {
+      const { data, error } = await supabase
+        .from('content_submissions')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error loading submissions:', error);
+        toast.error("Failed to load your submissions");
+      } else {
+        setSubmissions(data || []);
+      }
+    } catch (error) {
+      console.error('Error loading submissions:', error);
+      toast.error("Failed to load your submissions");
+    } finally {
+      setLoadingSubmissions(false);
+    }
+  };
 
   const handleSignOut = async () => {
     try {
@@ -63,27 +102,41 @@ const AuthorsDashboard = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contentType) {
+    if (!contentType || !user) {
       toast.error("Please select a content type");
       return;
     }
 
     setIsLoading(true);
     
-    // For now, we'll just show a success message
-    // In a real app, you'd save this to a submissions table
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast.success("Your submission has been sent for review!");
-      
-      // Reset form
-      setTitle("");
-      setContent("");
-      setContentType("");
-      setTribe("");
+      const { error } = await supabase
+        .from('content_submissions')
+        .insert({
+          user_id: user.id,
+          title,
+          content,
+          content_type: contentType,
+          tribe: tribe || null,
+        });
+
+      if (error) {
+        console.error('Error submitting content:', error);
+        toast.error("Failed to submit content");
+      } else {
+        toast.success("Your submission has been sent for review!");
+        
+        // Reset form
+        setTitle("");
+        setContent("");
+        setContentType("");
+        setTribe("");
+        
+        // Reload submissions
+        loadSubmissions();
+      }
     } catch (error) {
+      console.error('Error submitting content:', error);
       toast.error("Failed to submit content");
     } finally {
       setIsLoading(false);
@@ -142,7 +195,14 @@ const AuthorsDashboard = () => {
             </p>
           </div>
 
-          <Card>
+          <Tabs defaultValue="submit" className="space-y-6">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="submit">Submit Content</TabsTrigger>
+              <TabsTrigger value="submissions">My Submissions</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="submit">
+              <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <PenTool className="h-5 w-5" />
@@ -247,10 +307,10 @@ const AuthorsDashboard = () => {
                 </div>
               </form>
             </CardContent>
-          </Card>
+              </Card>
 
-          {/* Guidelines Section */}
-          <Card className="mt-6">
+              {/* Guidelines Section */}
+              <Card className="mt-6">
             <CardHeader>
               <CardTitle>Submission Guidelines</CardTitle>
             </CardHeader>
@@ -274,9 +334,97 @@ const AuthorsDashboard = () => {
                     <li>Community engagement encouraged</li>
                   </ul>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="submissions">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Eye className="h-5 w-5" />
+                  My Submissions
+                </CardTitle>
+                <CardDescription>
+                  Track the status of your submitted content
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {loadingSubmissions ? (
+                  <div className="text-center py-8">
+                    <div className="text-muted-foreground">Loading your submissions...</div>
+                  </div>
+                ) : submissions.length === 0 ? (
+                  <div className="text-center py-8">
+                    <div className="text-muted-foreground mb-4">No submissions yet</div>
+                    <p className="text-sm text-muted-foreground">
+                      Start by submitting your first story, poem, or article using the Submit Content tab.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {submissions.map((submission) => (
+                      <div key={submission.id} className="border border-border rounded-lg p-4 space-y-3">
+                        <div className="flex items-start justify-between">
+                          <div className="space-y-1">
+                            <h3 className="font-semibold text-foreground">{submission.title}</h3>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              {submission.content_type === 'story' && <BookOpen className="h-4 w-4" />}
+                              {submission.content_type === 'poem' && <PenTool className="h-4 w-4" />}
+                              {submission.content_type === 'article' && <FileText className="h-4 w-4" />}
+                              <span className="capitalize">{submission.content_type}</span>
+                              {submission.tribe && <span>• {submission.tribe}</span>}
+                              <span>• {new Date(submission.created_at).toLocaleDateString()}</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {submission.status === 'reviewing' && (
+                              <Badge variant="secondary" className="flex items-center gap-1">
+                                <Clock className="h-3 w-3" />
+                                Under Review
+                              </Badge>
+                            )}
+                            {submission.status === 'approved' && (
+                              <Badge variant="default" className="flex items-center gap-1">
+                                <CheckCircle className="h-3 w-3" />
+                                Approved
+                              </Badge>
+                            )}
+                            {submission.status === 'published' && (
+                              <Badge variant="default" className="flex items-center gap-1 bg-green-600">
+                                <CheckCircle className="h-3 w-3" />
+                                Published
+                              </Badge>
+                            )}
+                            {submission.status === 'rejected' && (
+                              <Badge variant="destructive" className="flex items-center gap-1">
+                                <XCircle className="h-3 w-3" />
+                                Rejected
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {submission.review_notes && (
+                          <div className="bg-muted rounded-md p-3">
+                            <p className="text-sm font-medium text-foreground mb-1">Review Notes:</p>
+                            <p className="text-sm text-muted-foreground">{submission.review_notes}</p>
+                          </div>
+                        )}
+                        
+                        <div className="text-sm text-muted-foreground">
+                          <strong>Preview:</strong> {submission.content.substring(0, 150)}
+                          {submission.content.length > 150 && "..."}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
         </div>
       </main>
     </div>

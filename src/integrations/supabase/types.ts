@@ -44,6 +44,45 @@ export type Database = {
         }
         Relationships: []
       }
+      content_submissions: {
+        Row: {
+          content: string
+          content_type: string
+          created_at: string
+          id: string
+          review_notes: string | null
+          status: string
+          title: string
+          tribe: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          content_type: string
+          created_at?: string
+          id?: string
+          review_notes?: string | null
+          status?: string
+          title: string
+          tribe?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          content_type?: string
+          created_at?: string
+          id?: string
+          review_notes?: string | null
+          status?: string
+          title?: string
+          tribe?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       customers: {
         Row: {
           created_at: string | null

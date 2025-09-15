@@ -24,11 +24,11 @@ const Header = () => {
               className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg sm:text-xl font-bold text-foreground">Ubuntu Voices</h1>
-              <p className="text-xs text-muted-foreground hidden md:block">Preserving Kenya's Heritage</p>
+              <h1 className="text-lg sm:text-xl font-bold text-foreground">Sauti Za Kale Afrika</h1>
+              <p className="text-xs text-muted-foreground hidden md:block">Stories Rooted in Africa, Shared with the World</p>
             </div>
             <div className="block sm:hidden">
-              <h1 className="text-base font-bold text-foreground">Ubuntu Voices</h1>
+              <h1 className="text-base font-bold text-foreground">Sauti Za Kale Afrika</h1>
             </div>
           </div>
 

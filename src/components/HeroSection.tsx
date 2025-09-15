@@ -22,14 +22,14 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="order-2 lg:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-card mb-4 sm:mb-6 leading-tight">
-              Voices of Kenya's
+              Sauti Za Kale
               <span className="bg-gradient-wisdom bg-clip-text text-transparent block">
-                Elders
+                Afrika
               </span>
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-card/90 mb-6 sm:mb-8 leading-relaxed">
-              Stories of Our Roots • Ubuntu Philosophy • Indigenous Wisdom
+              Stories Rooted in Africa, Shared with the World
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start">

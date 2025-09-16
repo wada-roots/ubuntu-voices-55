@@ -43,13 +43,13 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg z-50">
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/kikuyu" className="w-full cursor-pointer text-foreground hover:bg-muted">Kikuyu</a>
+                  <a href="/tribes/abagusii" className="w-full cursor-pointer text-foreground hover:bg-muted">Abagusii</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/luo" className="w-full cursor-pointer text-foreground hover:bg-muted">Luo</a>
+                  <a href="/tribes/ekegusii" className="w-full cursor-pointer text-foreground hover:bg-muted">Ekegusii</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/luhya" className="w-full cursor-pointer text-foreground hover:bg-muted">Luhya</a>
+                  <a href="/tribes/akamba" className="w-full cursor-pointer text-foreground hover:bg-muted">Akamba</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a href="/tribes/kalenjin" className="w-full cursor-pointer text-foreground hover:bg-muted">Kalenjin</a>
@@ -62,6 +62,7 @@ const Header = () => {
             <a href="/stories" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Stories</a>
             <a href="/ubuntu-voices" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Elders</a>
             <a href="/poetry" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Poetry</a>
+            <a href="/articles" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Articles</a>
             <a href="/medicinal-plants" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Healing</a>
             <a href="/heritage-map" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Places</a>
             <a href="/heroes" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Heroes</a>
@@ -104,9 +105,9 @@ const Header = () => {
               <div className="space-y-2">
                 <div className="font-medium text-foreground text-sm">Tribes</div>
                 <div className="pl-4 space-y-2">
-                  <a href="/tribes/kikuyu" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Kikuyu</a>
-                  <a href="/tribes/luo" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Luo</a>
-                  <a href="/tribes/luhya" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Luhya</a>
+                  <a href="/tribes/abagusii" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Abagusii</a>
+                  <a href="/tribes/ekegusii" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Ekegusii</a>
+                  <a href="/tribes/akamba" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Akamba</a>
                   <a href="/tribes/kalenjin" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Kalenjin</a>
                   <a href="/tribes/maasai" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Maasai</a>
                 </div>
@@ -114,6 +115,7 @@ const Header = () => {
               <a href="/stories" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Stories</a>
               <a href="/ubuntu-voices" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Elders</a>
               <a href="/poetry" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Poetry</a>
+              <a href="/articles" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Articles</a>
               <a href="/medicinal-plants" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Healing</a>
               <a href="/heritage-map" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Places</a>
               <a href="/heroes" className="block text-sm text-foreground hover:text-primary transition-colors py-2">Heroes</a>

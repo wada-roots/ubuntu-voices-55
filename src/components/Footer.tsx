@@ -11,8 +11,8 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-12 h-8 bg-gradient-to-b from-heritage-black via-heritage-red to-heritage-green rounded-sm shadow-md"></div>
               <div>
-                <h3 className="text-xl font-bold">Ubuntu Voices</h3>
-                <p className="text-sm text-card/80">Preserving Kenya's Heritage</p>
+                <h3 className="text-xl font-bold">Sauti Za Kale Afrika</h3>
+                <p className="text-sm text-card/80">Preserving Africa's Heritage</p>
               </div>
             </div>
             <p className="text-card/80 leading-relaxed mb-4">
@@ -74,10 +74,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-card/20 pt-8 text-center">
           <p className="text-card/60 text-sm">
-            © 2024 Ubuntu Voices. Preserving Kenya's heritage for future generations.
+            © 2025 Sauti Za Kale Afrika. Preserving Africa's heritage for future generations.
           </p>
           <p className="text-card/60 text-xs mt-2">
-            Built with love for our elders and ancestors
+            Built By DMS
           </p>
         </div>
       </div>

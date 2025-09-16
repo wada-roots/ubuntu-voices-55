@@ -7,93 +7,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const heroes = [
+
   {
     id: 1,
-    name: "Mekatilili wa Menza",
-    community: "Giriama",
-    period: "1860-1924",
-    role: "Female Resistance Leader",
-    achievements: [
-      "Led the Giriama resistance against British colonial rule",
-      "Organized communities through traditional dances and ceremonies", 
-      "Exiled but escaped and continued resistance"
-    ],
-    legacy: "Pioneer of women's leadership in anti-colonial resistance, symbol of Mijikenda unity",
-    quote: "The land belongs to our ancestors, not to strangers from across the sea",
-    historicalContext: "Led her people during the period of British coastal expansion, using traditional Giriama governance structures.",
-    image: "/images/heroes-memorial.jpg",
-    significance: "First documented female resistance leader in Kenya"
-  },
-  {
-    id: 2,
-    name: "Koitalel arap Samoei",
-    community: "Nandi",
-    period: "1860-1905",
-    role: "Orkoiyot (Spiritual Leader)",
-    achievements: [
-      "Led Nandi resistance for over 10 years",
-      "United Nandi clans against railway construction",
-      "Prophesied the coming of the 'iron snake' (railway)"
-    ],
-    legacy: "Symbol of Nandi resistance and spiritual leadership, his prophecies are still remembered",
-    quote: "The iron snake will bring strangers who will rule over our children",
-    historicalContext: "Resisted the Uganda Railway construction through Nandi territory, leading one of the longest resistances.",
-    image: "/images/heroes-memorial.jpg",
-    significance: "Longest sustained resistance against colonial rule"
-  },
-  {
-    id: 3,
-    name: "Waiyaki wa Hinga",
-    community: "Kikuyu",
-    period: "1838-1892", 
-    role: "Chief and Diplomat",
-    achievements: [
-      "First Kikuyu leader to engage with Europeans",
-      "Attempted diplomatic solutions to land disputes",
-      "Protected Kikuyu interests in early colonial period"
-    ],
-    legacy: "Remembered as a forward-thinking leader who tried to navigate the changing world diplomatically",
-    quote: "Let us learn the ways of these strangers, but not forget our own",
-    historicalContext: "Lived during the arrival of the first European explorers and missionaries in Kikuyu territory.",
-    image: "/images/heroes-memorial.jpg",
-    significance: "Bridge between traditional and colonial periods"
-  },
-  {
-    id: 4,
-    name: "Syokimau",
-    community: "Kamba",
-    period: "1800-1875",
-    role: "Prophetess and Leader",
-    achievements: [
-      "Prophesied the coming of railways and foreigners",
-      "Guided Kamba trade expeditions to the coast",
-      "Warned of future colonization through visions"
-    ],
-    legacy: "Revered as the greatest Kamba prophetess, her predictions proved remarkably accurate",
-    quote: "I see a great iron snake crossing our land, bringing people of different colors",
-    historicalContext: "Lived during the height of Kamba long-distance trade, foreseeing major changes to come.",
-    image: "/images/heroes-memorial.jpg",
-    significance: "Prophetic vision of colonial future"
-  },
-  {
-    id: 5,
-    name: "Mukite wa Ngui",
-    community: "Kikuyu",
-    period: "1840-1920",
-    role: "Medicine Woman and Resistance Leader",
-    achievements: [
-      "Led spiritual resistance against colonial medicine",
-      "Preserved traditional healing practices",
-      "Organized women's resistance networks"
-    ],
-    legacy: "Keeper of traditional healing knowledge, symbol of cultural preservation",
-    quote: "Our medicines have healed our people for generations, why abandon them now?",
-    historicalContext: "Resisted colonial medical practices while maintaining traditional healing systems.",
-    image: "/images/heroes-memorial.jpg",
-    significance: "Cultural preservation in healthcare"
-  },
-  {
-    id: 6,
     name: "Chief Kivoi",
     community: "Kamba",
     period: "1790-1860",

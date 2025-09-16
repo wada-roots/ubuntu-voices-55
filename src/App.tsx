@@ -16,7 +16,6 @@ import Heroes from "./pages/Heroes";
 import LearningHub from "./pages/LearningHub";
 import NotFound from "./pages/NotFound";
 import Abagusii from "./pages/tribes/Abagusii";
-import Ekegusii from "./pages/tribes/Ekegusii";
 import Akamba from "./pages/tribes/Akamba";
 import Kalenjin from "./pages/tribes/Kalenjin";
 import Maasai from "./pages/tribes/Maasai";
@@ -44,7 +43,6 @@ const App = () => (
           <Route path="/learning-hub" element={<LearningHub />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/tribes/abagusii" element={<Abagusii />} />
-          <Route path="/tribes/ekegusii" element={<Ekegusii />} />
           <Route path="/tribes/akamba" element={<Akamba />} />
           <Route path="/tribes/kalenjin" element={<Kalenjin />} />
           <Route path="/tribes/maasai" element={<Maasai />} />

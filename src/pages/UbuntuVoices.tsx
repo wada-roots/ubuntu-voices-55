@@ -7,71 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const elders = [
-  {
-    id: 1,
-    name: "Mama Wanjiku Nduta",
-    age: 102,
-    community: "Kikuyu",
-    location: "Nyeri County",
-    wisdom: "Mti hauendi ila ukiwa na mizizi - A tree cannot grow without roots",
-    bio: "Born during the colonial era, Mama Wanjiku has witnessed Kenya's transformation from colonization to independence. She is a keeper of traditional Kikuyu farming practices and storytelling.",
-    specialties: ["Traditional farming", "Kikuyu folklore", "Women's ceremonies"],
-    interviewCount: 12,
-    totalDuration: "3h 45min",
-    image: "/images/elders-storytelling.jpg"
-  },
-  {
-    id: 2,
-    name: "Mzee Kipkoech Rotich",
-    age: 98,
-    community: "Kalenjin",
-    location: "Rift Valley",
-    wisdom: "Chepsiryet chi kibai - Unity is strength",
-    bio: "A former warrior and long-distance runner, Mzee Kipkoech remembers the old cattle-raiding traditions and the transformation of the Kalenjin community.",
-    specialties: ["Warrior traditions", "Running culture", "Cattle keeping"],
-    interviewCount: 8,
-    totalDuration: "2h 30min",
-    image: "/images/elders-storytelling.jpg"
-  },
-  {
-    id: 3,
-    name: "Bibi Fatuma Al-Zahra",
-    age: 105,
-    community: "Swahili",
-    location: "Lamu Island",
-    wisdom: "Haraka haraka haina baraka - Rushing has no blessings",
-    bio: "The oldest resident of Lamu, Bibi Fatuma has seen the island change through decades. She is a master of traditional Swahili poetry and dhow-building tales.",
-    specialties: ["Swahili poetry", "Maritime traditions", "Islamic culture"],
-    interviewCount: 15,
-    totalDuration: "4h 20min",
-    image: "/images/elders-storytelling.jpg"
-  },
-  {
-    id: 4,
-    name: "Mama Nasirian Sankale",
-    age: 94,
-    community: "Maasai",
-    location: "Kajiado County",
-    wisdom: "Meaa sii olmurran - A warrior never retreats",
-    bio: "A respected elder and traditional healer, Mama Nasirian bridges the gap between traditional Maasai customs and modern life.",
-    specialties: ["Traditional healing", "Maasai ceremonies", "Beadwork traditions"],
-    interviewCount: 10,
-    totalDuration: "3h 15min",
-    image: "/images/elders-storytelling.jpg"
-  },
-  {
-    id: 5,
-    name: "Dani Otieno Oginga",
-    age: 89,
-    community: "Luo",
-    location: "Kisumu County",
-    wisdom: "Jaduong' ok nyal bedo matin - An elder cannot become small",
-    bio: "A traditional musician and oral historian, Dani has preserved countless Luo songs, proverbs, and historical accounts.",
-    specialties: ["Traditional music", "Oral history", "Luo customs"],
-    interviewCount: 20,
-    totalDuration: "5h 10min",
-    image: "/images/elders-storytelling.jpg"
-  },
+
   {
     id: 6,
     name: "Elder Ekara Lomuria",

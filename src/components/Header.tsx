@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo with Kenyan Flag */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <img 
-              src="/images/kenyan-flag.png" 
+              src="/images/logo2.jpg" 
               alt="Kenyan Flag"
               className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
             />
@@ -46,7 +46,6 @@ const Header = () => {
                   <a href="/tribes/abagusii" className="w-full cursor-pointer text-foreground hover:bg-muted">Abagusii</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/tribes/ekegusii" className="w-full cursor-pointer text-foreground hover:bg-muted">Ekegusii</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a href="/tribes/akamba" className="w-full cursor-pointer text-foreground hover:bg-muted">Akamba</a>

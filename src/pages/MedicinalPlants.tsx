@@ -6,73 +6,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const plants = [
+
   {
     id: 1,
-    name: "Muthithi",
-    scientificName: "Senna didymobotrya",
-    community: "Kikuyu",
-    uses: ["Stomach problems", "Malaria", "Skin infections"],
-    preparation: "Boil leaves and roots in water for 20 minutes. Drink 3 times daily.",
-    healer: "Mama Wanjiku",
-    difficulty: "Easy",
-    safety: "Generally safe, avoid during pregnancy",
-    description: "A common shrub found in highland areas, traditionally used by Kikuyu healers for digestive issues and fever.",
-    image: "/images/muthithi-plant.jpg"
-  },
-  {
-    id: 2,
-    name: "Mukinduri",
-    scientificName: "Croton megalocarpus",
-    community: "Kikuyu",
-    uses: ["Wounds", "Respiratory problems", "Joint pain"],
-    preparation: "Crush fresh leaves and apply directly to wounds, or boil bark for respiratory issues.",
-    healer: "Mzee Kamau",
-    difficulty: "Medium",
-    safety: "External use only for wounds",
-    description: "Sacred tree whose bark and leaves have powerful healing properties for external wounds and lung conditions.",
-    image: "/images/croton-plant.jpg"
-  },
-  {
-    id: 3,
-    name: "Leleshwa",
-    scientificName: "Tarenna graveolens",
-    community: "Maasai",
-    uses: ["Colds", "Flu", "Breathing problems"],
-    preparation: "Burn dried leaves and inhale smoke, or make tea from fresh leaves.",
-    healer: "Mama Nasirian",
-    difficulty: "Easy",
-    safety: "Safe for all ages",
-    description: "Aromatic shrub highly valued by Maasai communities for treating respiratory ailments and cleansing ceremonies.",
-    image: "/images/leleshwa-plant.jpg"
-  },
-  {
-    id: 4,
-    name: "Mubiru",
-    scientificName: "Kikuyu traditional name",
-    community: "Kikuyu",
-    uses: ["Diabetes", "High blood pressure", "Kidney problems"],
-    preparation: "Boil roots in water overnight, drink in the morning on empty stomach.",
-    healer: "Elder Wambui",
-    difficulty: "Advanced",
-    safety: "Consult healer for proper dosage",
-    description: "Powerful medicinal root requiring careful preparation, traditionally used for serious health conditions.",
-    image: "/images/medicinal-plants.jpg"
-  },
-  {
-    id: 5,
-    name: "Sodom Apple",
-    scientificName: "Solanum incanum",
-    community: "Kalenjin",
-    uses: ["Tooth pain", "Skin conditions", "Digestive issues"],
-    preparation: "Chew small piece for tooth pain, or make paste for skin application.",
-    healer: "Mzee Kipkoech",
-    difficulty: "Medium",
-    safety: "Use sparingly, can be toxic in large amounts",
-    description: "Thorny plant with powerful alkaloids, used carefully by traditional healers for pain relief.",
-    image: "/images/sodom-apple.jpg"
-  },
-  {
-    id: 6,
     name: "Msaharati",
     scientificName: "Ocimum gratissimum",
     community: "Swahili",

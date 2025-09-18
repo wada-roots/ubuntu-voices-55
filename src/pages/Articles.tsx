@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, BookOpen, ArrowRight } from "lucide-react";
+import Header from "@/components/Header";
 
 const Articles = () => {
   const articles = [
@@ -36,7 +37,8 @@ Acha niseme kwamba sitaki aibu tena ya kuwa mkalimani haswa wa wafrika, jamani m
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
+      <Header />
+      {/* Hero Section */}
       <div className="bg-gradient-heritage text-primary-foreground py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">

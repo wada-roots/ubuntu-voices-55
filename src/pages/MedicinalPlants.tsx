@@ -18,7 +18,7 @@ const plants = [
     difficulty: "Easy",
     safety: "Safe for regular use",
     description: "Sacred basil used in coastal communities for both physical healing and spiritual practices.",
-    image: "/images/msaharati-plant.jpg"
+    image: "/images/plants/msaharati-plant.jpg"
   }
 ];
 
@@ -57,7 +57,7 @@ const MedicinalPlants = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
         <img 
-          src="/images/medicinal-plants.jpg"
+          src="/images/components/medicinal-plants.jpg"
           alt="Traditional medicinal plants"
             className="w-full h-full object-cover"
           />

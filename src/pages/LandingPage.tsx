@@ -42,7 +42,7 @@ const LandingPage = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-heritage-black/60 backdrop-blur-md py-4 transition-all duration-300">
         <div className="container mx-auto px-4 flex items-center">
           <motion.img
-            src="/images/logo.jpg"
+            src="/images/branding/logo.jpg"
             alt="Sauti Za Kale Afrika Logo"
             className="h-12 w-auto"
             initial={{ opacity: 0, x: -20 }}
@@ -58,7 +58,7 @@ const LandingPage = () => {
         style={{ y }}
       >
         <img
-          src="/images/founder-with-elder.jpg"
+          src="/images/people/founder-with-elder.jpg"
           alt="Masaki Magack with an elder - preserving African stories"
           className="w-full h-full object-cover object-center"
         />

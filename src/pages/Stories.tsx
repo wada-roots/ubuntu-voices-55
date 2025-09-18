@@ -33,7 +33,7 @@ const Stories = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/storytelling-circle.jpg"
+            src="/images/components/storytelling-circle.jpg"
             alt="Traditional storytelling circle"
             className="w-full h-full object-cover"
           />

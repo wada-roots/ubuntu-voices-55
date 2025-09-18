@@ -108,7 +108,7 @@ const AuthPage = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/village-landscape.jpg')",
+          backgroundImage: "url('/images/components/village-landscape.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-black/60" />

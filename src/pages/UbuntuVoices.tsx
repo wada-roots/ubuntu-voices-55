@@ -19,7 +19,7 @@ const elders = [
     specialties: ["Weather prediction", "Desert survival", "Turkana traditions"],
     interviewCount: 7,
     totalDuration: "2h 45min",
-    image: "/images/elders-storytelling.jpg"
+    image: "/images/components/elders-storytelling.jpg"
   }
 ];
 
@@ -34,7 +34,7 @@ const UbuntuVoices = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/elders-storytelling.jpg" 
+            src="/images/components/elders-storytelling.jpg"
             alt="Elders sharing wisdom"
             className="w-full h-full object-cover"
           />

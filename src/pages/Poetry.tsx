@@ -20,7 +20,7 @@ const poetryItems = [
     language: "Kikuyu/Swahili",
     occasion: "Community work",
     instruments: ["Traditional drums", "Clapping", "Vocal harmony"],
-    image: "/images/poetry-music.jpg"
+    image: "/images/components/poetry-music.jpg"
   },
 ]
 const types = ["All", "Traditional Song", "Epic Poetry", "Coastal Poetry", "Spiritual Chant", "Narrative Poetry", "Praise Poetry"];
@@ -51,7 +51,7 @@ const Poetry = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/poetry-music.jpg" 
+            src="/images/components/poetry-music.jpg"
             alt="Traditional poetry and music"
             className="w-full h-full object-cover"
           />

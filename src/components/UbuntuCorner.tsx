@@ -36,7 +36,7 @@ const UbuntuCorner = () => {
       {/* Background */}
       <div className="absolute inset-0 opacity-5">
         <img 
-          src="/images/village-landscape.jpg"
+          src="/images/components/village-landscape.jpg"
           alt="Village landscape"
           className="w-full h-full object-cover"
         />

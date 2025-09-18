@@ -10,11 +10,11 @@ const CulturalCarousel = () => {
   const [showTranslation, setShowTranslation] = useState(false);
 
   const culturalImages = [
-    { src: "/images/storytelling-circle.jpg", alt: "Traditional storytelling circle" },
-    { src: "/images/medicinal-plants.jpg", alt: "Traditional medicinal plants" },
-    { src: "/images/poetry-music.jpg", alt: "Poetry and traditional music" },
-    { src: "/images/sacred-places.jpg", alt: "Sacred cultural places" },
-    { src: "/images/elders-storytelling.jpg", alt: "Elders sharing wisdom" },
+    { src: "/images/components/storytelling-circle.jpg", alt: "Traditional storytelling circle" },
+    { src: "/images/components/medicinal-plants.jpg", alt: "Traditional medicinal plants" },
+    { src: "/images/components/poetry-music.jpg", alt: "Poetry and traditional music" },
+    { src: "/images/components/sacred-places.jpg", alt: "Sacred cultural places" },
+    { src: "/images/components/elders-storytelling.jpg", alt: "Elders sharing wisdom" },
   ];
 
   // Numbers 1-10 in different Kenyan languages

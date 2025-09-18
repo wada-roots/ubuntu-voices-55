@@ -9,7 +9,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/hero-elder.jpg" 
+          src="/images/components/hero-elder.jpg"
           alt="Wise Kenyan elder sharing stories"
           className="w-full h-full object-cover"
         />

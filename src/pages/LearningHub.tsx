@@ -19,7 +19,7 @@ const resources = [
     downloads: 1240,
     rating: 4.8,
     language: "English/Kikuyu",
-    image: "/images/learning-hub.jpg"
+    image: "/images/education/learning-hub.jpg"
   },
 ];
 
@@ -50,7 +50,7 @@ const LearningHub = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
         <img 
-          src="/images/learning-hub.jpg"
+          src="/images/education/learning-hub.jpg"
           alt="Learning and education"
             className="w-full h-full object-cover"
           />

@@ -22,7 +22,7 @@ const FeaturedStory = () => {
               {/* Image */}
               <div className="relative h-64 md:h-auto">
                 <img 
-                  src="/images/elders-storytelling.jpg"
+                  src="/images/components/elders-storytelling.jpg"
                   alt="Elders sharing stories around fire"
                   className="w-full h-full object-cover"
                 />

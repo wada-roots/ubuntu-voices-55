@@ -22,7 +22,7 @@ const heroes = [
     legacy: "Pioneer of long-distance trade, bridge between communities",
     quote: "Trade brings people together, even those who speak different tongues",
     historicalContext: "Led Kamba trading expeditions far inland, establishing the community as master traders.",
-    image: "/images/heroes-memorial.jpg",
+    image: "/images/heroes/heroes-memorial.jpg",
     significance: "Economic pioneer and cultural bridge"
   }
 ];
@@ -57,7 +57,7 @@ const Heroes = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/heroes-memorial.jpg" 
+            src="/images/heroes/heroes-memorial.jpg"
             alt="Heroes and freedom fighters"
             className="w-full h-full object-cover"
           />

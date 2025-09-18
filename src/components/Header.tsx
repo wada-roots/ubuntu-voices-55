@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo with Kenyan Flag */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <img 
-              src="/images/logo2.jpg" 
+              src="/images/branding/logo2.jpg"
               alt="Kenyan Flag"
               className="w-8 h-6 sm:w-12 sm:h-8 object-cover rounded-sm shadow-md border border-border"
             />

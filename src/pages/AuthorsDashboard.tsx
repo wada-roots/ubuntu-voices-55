@@ -161,7 +161,7 @@ const AuthorsDashboard = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img 
-                src="/images/kenyan-flag.png" 
+                src="/images/branding/kenyan-flag.png"
                 alt="Kenyan Flag"
                 className="w-10 h-7 object-cover rounded-sm shadow-md border border-border"
               />

@@ -8,23 +8,30 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Logo & Mission */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-8 bg-gradient-to-b from-heritage-black via-heritage-red to-heritage-green rounded-sm shadow-md"></div>
-              <div>
-                <h3 className="text-xl font-bold">Sauti Za Kale Afrika</h3>
-                <p className="text-sm text-card/80">Preserving Africa's Heritage</p>
-              </div>
-            </div>
-            <p className="text-card/80 leading-relaxed mb-4">
-              Dedicated to preserving and celebrating Kenyan indigenous languages, 
-              oral traditions, and cultural knowledge through the Ubuntu philosophy 
-              of interconnectedness and shared humanity.
-            </p>
-            <div className="flex items-center gap-2 text-sm">
-              <Heart className="h-4 w-4 text-ubuntu" />
-              <span className="text-ubuntu font-medium">"I am because we are"</span>
-            </div>
-          </div>
+  <div className="flex items-center space-x-3 mb-4">
+    <img
+      src="/images/branding/kenyan-flag.png"
+      alt="Kenyan Flag"
+      className="w-12 h-8 rounded-sm shadow-md"
+    />
+    <div>
+      <h3 className="text-xl font-bold">Sauti Za Kale Afrika</h3>
+      <p className="text-sm text-card/80">Preserving Africa's Heritage</p>
+    </div>
+  </div>
+
+  <p className="text-card/80 leading-relaxed mb-4">
+    Dedicated to preserving and celebrating Kenyan indigenous languages, 
+    oral traditions, and cultural knowledge through the Ubuntu philosophy 
+    of interconnectedness and shared humanity.
+  </p>
+
+  <div className="flex items-center gap-2 text-sm">
+    <Heart className="h-4 w-4 text-ubuntu" />
+    <span className="text-ubuntu font-medium">"I am because we are"</span>
+  </div>
+</div>
+
 
           {/* Quick Links */}
           <div>
@@ -53,23 +60,42 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="border-t border-card/20 pt-8 mb-8">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="ubuntu" size="lg">
-              <Upload className="mr-2 h-5 w-5" />
-              Share Your Story
-            </Button>
-            <Button variant="outline" size="lg" className="border-card/30 text-card hover:bg-card/10">
-              <Mail className="mr-2 h-5 w-5" />
-              Subscribe to Updates
-            </Button>
-            <Button variant="outline" size="lg" className="border-card/30 text-card hover:bg-card/10">
-              <Share2 className="mr-2 h-5 w-5" />
-              Share Platform
-            </Button>
-          </div>
-        </div>
+{/* Action Buttons */}
+<div className="border-t border-card/20 pt-8 mb-8">
+  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    {/* Share Your Story */}
+    <Button
+      variant="ubuntu"
+      size="lg"
+      className="bg-ubuntu text-white shadow-md"
+    >
+      <Upload className="mr-2 h-5 w-5" />
+      Share Your Story
+    </Button>
+
+    {/* Subscribe to Updates */}
+    <Button
+      variant="outline"
+      size="lg"
+      className="border border-ubuntu/40 text-white bg-card/20"
+    >
+      <Mail className="mr-2 h-5 w-5" />
+      Subscribe to Updates
+    </Button>
+
+    {/* Share Platform */}
+    <Button
+      variant="outline"
+      size="lg"
+      className="border border-ubuntu/40 text-white bg-card/20"
+    >
+      <Share2 className="mr-2 h-5 w-5" />
+      Share Platform
+    </Button>
+  </div>
+</div>
+
+
 
         {/* Copyright */}
         <div className="border-t border-card/20 pt-8 text-center">

@@ -1,44 +1,42 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Heart, ArrowRight, TrendingUp } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import CountUp from "react-countup";
-import { useRef } from "react";
 
 const LandingPage = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  // Variants are now simple, without transitions
-  const containerVariants = {
+  // Typed Framer Motion Variants
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const statVariants = {
+  const statVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const founderCardVariants = {
+  const founderCardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    show: { opacity: 1, scale: 1 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden" ref={ref}>
-      {/* Sticky Header with Logo */}
+      {/* Fixed Transparent Header with Logo */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-heritage-black/60 backdrop-blur-md py-4 transition-all duration-300">
         <div className="container mx-auto px-4 flex items-center">
           <motion.img
@@ -52,11 +50,8 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Background with Parallax Effect */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y }}
-      >
+      {/* Background with Parallax Scroll */}
+      <motion.div className="absolute inset-0 z-0" style={{ y }}>
         <img
           src="/images/people/founder-with-elder.jpg"
           alt="Masaki Magack with an elder - preserving African stories"
@@ -65,11 +60,11 @@ const LandingPage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-heritage-black/90 via-heritage-black/80 to-heritage-black/70"></div>
       </motion.div>
 
-      {/* Main Content with Split Layout, pushed down by the header */}
+      {/* Main Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center py-16 mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column: Hero Text and Call to Action */}
+            {/* Left Column: Hero Section */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -78,27 +73,23 @@ const LandingPage = () => {
             >
               <motion.h1
                 variants={itemVariants}
-                transition={{ duration: 0.8 }}
                 className="text-5xl lg:text-7xl font-bold text-card leading-tight"
               >
-                Sauti Za
+                Sauti Za{" "}
                 <span className="bg-gradient-wisdom bg-clip-text text-transparent block">
                   Kale Afrika
                 </span>
               </motion.h1>
 
-              {/* Subtitle with fixed visibility */}
               <motion.p
                 variants={itemVariants}
-                transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl lg:text-2xl text-card font-medium mt-4 max-w-lg lg:max-w-none"
               >
                 Stories Rooted in Africa, Shared with the World
               </motion.p>
-              
+
               <motion.div
                 variants={itemVariants}
-                transition={{ duration: 0.8, delay: 0.4 }}
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full"
               >
                 <Button
@@ -109,6 +100,7 @@ const LandingPage = () => {
                   Explore Our Heritage
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+
                 <Button
                   variant="outline"
                   size="lg"
@@ -120,12 +112,11 @@ const LandingPage = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Column: Founder's Welcome Card */}
+            {/* Right Column: Founder's Message */}
             <motion.div
               variants={founderCardVariants}
               initial="hidden"
               whileInView="show"
-              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
               className="lg:pl-8"
             >
@@ -142,12 +133,14 @@ const LandingPage = () => {
                       <p className="text-muted-foreground">Masaki Magack</p>
                     </div>
                   </div>
+
                   <p className="text-foreground/80 leading-relaxed mb-6">
                     "I am Masaki Magack, a Pan-African storyteller, writer and emerging scholar in communication, culture, and media studies. From childhood, I discovered the power of words. Today, Africa faces rapid erosion of indigenous languages and traditions. Through storytelling, poetry, research, and digital archiving, I am building a platform where African voices are preserved and shared with the world."
                   </p>
+
                   <div className="bg-heritage-green/10 p-4 rounded-lg border-l-4 border-heritage-green">
                     <p className="text-foreground font-medium italic">
-                      "My vision is to create a living archive of African languages, stories, and cultural memories—a bridge between past and future, ensuring our children inherit not just our lands but our voices."
+                      "My vision is to create a living archive of African languages, stories, and cultural memories — a bridge between past and future, ensuring our children inherit not just our lands but our voices."
                     </p>
                   </div>
                 </CardContent>
@@ -163,21 +156,23 @@ const LandingPage = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
           >
+            {/* Stat 1 */}
             <motion.div
               variants={statVariants}
-              transition={{ duration: 0.8, delay: 0.2 }}
               className="text-center p-6 bg-background/20 backdrop-blur-sm rounded-lg border border-heritage-green/20"
             >
               <BookOpen className="h-8 w-8 text-heritage-green mx-auto mb-3" />
               <div className="text-3xl font-bold text-heritage-red mb-1">
                 <CountUp end={42} duration={2} suffix="+" />
               </div>
-              <div className="text-card/80 text-sm font-medium">Kenyan Communities</div>
+              <div className="text-card/80 text-sm font-medium">
+                Kenyan Communities
+              </div>
             </motion.div>
 
+            {/* Stat 2 */}
             <motion.div
               variants={statVariants}
-              transition={{ duration: 0.8, delay: 0.4 }}
               className="text-center p-6 bg-background/20 backdrop-blur-sm rounded-lg border border-heritage-green/20"
             >
               <Heart className="h-8 w-8 text-heritage-red mx-auto mb-3" />
@@ -185,19 +180,23 @@ const LandingPage = () => {
                 <CountUp end={3} duration={2} />
               </div>
               <div className="text-card/80 text-sm font-medium">Languages</div>
-              <div className="text-xs text-card/60 mt-1">Ekegusii, Kiswahili, English</div>
+              <div className="text-xs text-card/60 mt-1">
+                Ekegusii, Kiswahili, English
+              </div>
             </motion.div>
 
+            {/* Stat 3 */}
             <motion.div
               variants={statVariants}
-              transition={{ duration: 0.8, delay: 0.6 }}
               className="text-center p-6 bg-background/20 backdrop-blur-sm rounded-lg border border-heritage-green/20"
             >
               <TrendingUp className="h-8 w-8 text-ubuntu mx-auto mb-3" />
               <div className="text-3xl font-bold text-heritage-red mb-1">
                 <CountUp end={1000} duration={3} suffix="+" />
               </div>
-              <div className="text-card/80 text-sm font-medium">Stories Preserved</div>
+              <div className="text-card/80 text-sm font-medium">
+                Stories Preserved
+              </div>
             </motion.div>
           </motion.div>
         </div>

@@ -6,126 +6,143 @@
 
 @layer base {
   :root {
-    /* Base color palette */
-    --background: 0 0% 98%;
-    --foreground: 0 0% 5%;
-
-    /* Card tones */
+    /* Base colors */
+    --background: 30 20% 97%;
+    --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
-
+    --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
+    --popover-foreground: 20 14.3% 4.1%;
 
-    /* Primary - Kenyan flag green */
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary - Kenyan heritage red */
+    --primary: 0 65% 51%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - lighter green */
-    --secondary: 142 32% 85%;
-    --secondary-foreground: 0 0% 5%;
+    /* Secondary - Earth tones */
+    --secondary: 30 25% 85%;
+    --secondary-foreground: 20 14.3% 4.1%;
 
-    /* Muted tones */
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 45%;
+    /* Muted */
+    --muted: 30 20% 92%;
+    --muted-foreground: 25 5.3% 44.7%;
 
-    /* Accent - Kenyan flag red */
-    --accent: 0 84% 50%;
-    --accent-foreground: 0 0% 98%;
-
-    /* Ubuntu wisdom - gold accent */
-    --ubuntu: 48 100% 67%;
-    --ubuntu-foreground: 0 0% 5%;
-
-    /* Heritage colors - Red, Green, Black */
-    --heritage-brown: 0 0% 20%;
-    --heritage-green: 142 76% 36%;
-    --heritage-red: 0 84% 50%;
-    --heritage-black: 0 0% 5%;
-    --heritage-accent: 0 0% 75%;
-
-    /* Gradients using red, green, black theme */
-    --gradient-earth: linear-gradient(135deg, hsl(0 84% 50%), hsl(48 100% 67%));
-    --gradient-heritage: linear-gradient(135deg, hsl(142 76% 36%), hsl(0 0% 5%));
-    --gradient-wisdom: linear-gradient(180deg, hsl(48 100% 67%), hsl(142 76% 36%));
+    /* Accent - Warm terracotta */
+    --accent: 15 55% 60%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 35 20% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 30 20% 85%;
-    --input: 30 20% 85%;
-    --ring: 140 45% 25%;
+    /* Heritage colors - Kenyan flag inspired */
+    --heritage-red: 0 65% 51%;
+    --heritage-green: 145 63% 42%;
+    --heritage-black: 0 0% 10%;
+    --heritage-brown: 25 45% 35%;
 
+    /* Ubuntu - Community orange */
+    --ubuntu: 25 85% 55%;
+    --ubuntu-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 0 65% 51%;
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Chart colors */
+    --chart-1: 0 65% 51%;
+    --chart-2: 145 63% 42%;
+    --chart-3: 25 85% 55%;
+    --chart-4: 15 55% 60%;
+    --chart-5: 25 45% 35%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Gradients */
+    --gradient-heritage: linear-gradient(135deg, hsl(0 65% 51%) 0%, hsl(15 55% 60%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(30 35% 88%) 0%, hsl(25 25% 92%) 100%);
+    --gradient-wisdom: linear-gradient(135deg, hsl(25 85% 55%) 0%, hsl(0 65% 51%) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsla(0, 0%, 0%, 0.08);
+    --shadow-medium: 0 4px 16px hsla(0, 0%, 0%, 0.12);
+    --shadow-strong: 0 8px 24px hsla(0, 0%, 0%, 0.16);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 20 14.3% 4.1%;
+    --sidebar-primary: 0 65% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 20% 92%;
+    --sidebar-accent-foreground: 20 14.3% 4.1%;
+    --sidebar-border: 30 20% 88%;
+    --sidebar-ring: 0 65% 51%;
   }
 
   .dark {
-    /* Dark mode with red, green, black theme */
-    --background: 0 0% 8%;
+    /* Base colors - Dark mode */
+    --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
-
-    --card: 0 0% 12%;
+    --card: 24 9.8% 10%;
     --card-foreground: 0 0% 95%;
-
-    --popover: 0 0% 12%;
+    --popover: 0 0% 9%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 142 76% 45%;
-    --primary-foreground: 0 0% 8%;
+    /* Primary */
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 20%;
+    /* Secondary */
+    --secondary: 30 15% 20%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 65%;
+    /* Muted */
+    --muted: 0 0% 15%;
+    --muted-foreground: 25 5% 60%;
 
-    --accent: 0 84% 60%;
-    --accent-foreground: 0 0% 8%;
+    /* Accent */
+    --accent: 15 60% 55%;
+    --accent-foreground: 0 0% 100%;
 
-    --ubuntu: 48 100% 75%;
-    --ubuntu-foreground: 0 0% 8%;
-
-    --heritage-brown: 0 0% 75%;
-    --heritage-green: 142 76% 45%;
-    --heritage-red: 0 84% 60%;
-    --heritage-black: 0 0% 95%;
-    --heritage-accent: 0 0% 25%;
-
-    --gradient-earth: linear-gradient(135deg, hsl(0 84% 60%), hsl(48 100% 75%));
-    --gradient-heritage: linear-gradient(135deg, hsl(142 76% 45%), hsl(0 0% 8%));
-    --gradient-wisdom: linear-gradient(180deg, hsl(48 100% 75%), hsl(142 76% 45%));
-
+    /* Destructive */
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 35 20% 95%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 25 25% 18%;
-    --input: 25 25% 18%;
-    --ring: 140 45% 65%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    /* Heritage colors - Adjusted for dark mode */
+    --heritage-red: 0 72.2% 50.6%;
+    --heritage-green: 145 60% 45%;
+    --heritage-black: 0 0% 95%;
+    --heritage-brown: 25 40% 65%;
+
+    /* Ubuntu */
+    --ubuntu: 25 80% 60%;
+    --ubuntu-foreground: 0 0% 10%;
+
+    /* Borders and inputs */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 72.2% 50.6%;
+
+    /* Chart colors - Dark mode adjusted */
+    --chart-1: 0 72.2% 50.6%;
+    --chart-2: 145 60% 45%;
+    --chart-3: 25 80% 60%;
+    --chart-4: 15 60% 55%;
+    --chart-5: 25 40% 65%;
+
+    /* Gradients - Dark mode */
+    --gradient-heritage: linear-gradient(135deg, hsl(0 72.2% 50.6%) 0%, hsl(15 60% 55%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(30 20% 15%) 0%, hsl(25 15% 20%) 100%);
+    --gradient-wisdom: linear-gradient(135deg, hsl(25 80% 60%) 0%, hsl(0 72.2% 50.6%) 100%);
+
+    /* Sidebar */
+    --sidebar-background: 24 9.8% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 72.2% 50.6%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 72.2% 50.6%;
   }
 }
 

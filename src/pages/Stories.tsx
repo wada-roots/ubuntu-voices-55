@@ -1,27 +1,64 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Clock, Search } from "lucide-react";
-import { useState } from "react";
+import { Play, Clock, Search, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+interface Story {
+  id: string;
+  title: string;
+  content: string;
+  tribe: string | null;
+  created_at: string;
+}
+
 const Stories = () => {
+  const { toast } = useToast();
   const [selectedCommunity, setSelectedCommunity] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Stories data should come from API or props
-  const stories: any[] = [];
+  useEffect(() => {
+    loadStories();
+  }, []);
 
-  // Community list can be dynamically derived from stories or API
-  const communities: string[] = ["All"];
+  const loadStories = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("content_submissions")
+        .select("*")
+        .eq("status", "approved")
+        .eq("content_type", "story")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setStories(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Error loading stories",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Get unique communities from stories
+  const communities = ["All", ...Array.from(new Set(stories.map(s => s.tribe).filter(Boolean)))];
+
 
   const filteredStories = stories.filter((story) => {
     const matchesCommunity =
-      selectedCommunity === "All" || story.community === selectedCommunity;
+      selectedCommunity === "All" || story.tribe === selectedCommunity;
     const matchesSearch =
       story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      story.description.toLowerCase().includes(searchTerm.toLowerCase());
+      story.content.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCommunity && matchesSearch;
   });
 
@@ -91,7 +128,11 @@ const Stories = () => {
       {/* Stories Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          {filteredStories.length > 0 ? (
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-ubuntu" />
+            </div>
+          ) : filteredStories.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredStories.map((story, index) => (
                 <Card
@@ -102,12 +143,14 @@ const Stories = () => {
                   <CardContent className="p-6">
                     <div className="mb-4">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold bg-ubuntu/20 text-ubuntu rounded-full">
-                          {story.community}
-                        </span>
+                        {story.tribe && (
+                          <span className="inline-block px-3 py-1 text-xs font-semibold bg-ubuntu/20 text-ubuntu rounded-full">
+                            {story.tribe}
+                          </span>
+                        )}
                         <span className="text-xs text-muted-foreground flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          {story.duration}
+                          {new Date(story.created_at).toLocaleDateString()}
                         </span>
                       </div>
 
@@ -115,37 +158,20 @@ const Stories = () => {
                         {story.title}
                       </h3>
 
-                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                        {story.description}
+                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-4">
+                        {story.content}
                       </p>
                     </div>
 
                     <div className="border-t border-border pt-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="text-xs text-muted-foreground">
-                          <div className="font-medium">{story.narrator}</div>
-                          <div>{story.age} years old</div>
-                        </div>
-                        <Button
-                          variant="ubuntu"
-                          size="sm"
-                          className="group-hover:scale-105 transition-transform"
-                        >
-                          <Play className="mr-1 h-3 w-3" />
-                          Listen
-                        </Button>
-                      </div>
-
-                      <div className="flex gap-1 flex-wrap">
-                        {story.tags.map((tag: string) => (
-                          <span
-                            key={tag}
-                            className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <Button
+                        variant="ubuntu"
+                        size="sm"
+                        className="w-full group-hover:scale-105 transition-transform"
+                      >
+                        <Play className="mr-1 h-3 w-3" />
+                        Read Full Story
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -153,8 +179,13 @@ const Stories = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No stories found. Please add content or adjust your filters.
+              <p className="text-muted-foreground text-lg mb-4">
+                {searchTerm || selectedCommunity !== "All" 
+                  ? "No stories found matching your criteria." 
+                  : "No stories have been published yet."}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Share your cultural heritage by submitting a story!
               </p>
             </div>
           )}

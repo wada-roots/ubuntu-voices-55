@@ -1,46 +1,61 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Mic, Music, Heart, Filter, Search } from "lucide-react";
-import { useState } from "react";
+import { Play, Mic, Music, Heart, Filter, Search, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const poetryItems = [
-  {
-    id: 1,
-    title: "Nyimbo za Harambee",
-    type: "Traditional Song",
-    community: "Kikuyu",
-    poet: "Mama Wanjiku",
-    description: "Traditional work songs sung during community building projects, embodying the spirit of unity and cooperation.",
-    excerpt: "Harambee, harambee, twendeni pamoja...\nTogether we build, together we grow,\nOur hands united, our hearts as one...",
-    theme: "Unity",
-    duration: "8 min",
-    language: "Kikuyu/Swahili",
-    occasion: "Community work",
-    instruments: ["Traditional drums", "Clapping", "Vocal harmony"],
-    image: "/images/components/poetry-music.jpg"
-  },
-]
-const types = ["All", "Traditional Song", "Epic Poetry", "Coastal Poetry", "Spiritual Chant", "Narrative Poetry", "Praise Poetry"];
-const themes = ["All", "Unity", "Courage", "Ocean Life", "Spirituality", "Survival", "Achievement"];
-const communities = ["All", "Kikuyu", "Maasai", "Swahili", "Luo", "Turkana", "Kalenjin"];
+interface PoetryItem {
+  id: string;
+  title: string;
+  content: string;
+  tribe: string | null;
+  created_at: string;
+}
 
 const Poetry = () => {
-  const [selectedType, setSelectedType] = useState("All");
-  const [selectedTheme, setSelectedTheme] = useState("All");
+  const { toast } = useToast();
   const [selectedCommunity, setSelectedCommunity] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [poetryItems, setPoetryItems] = useState<PoetryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadPoetry();
+  }, []);
+
+  const loadPoetry = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("content_submissions")
+        .select("*")
+        .eq("status", "approved")
+        .eq("content_type", "poetry")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setPoetryItems(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Error loading poetry",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const communities = ["All", ...Array.from(new Set(poetryItems.map(p => p.tribe).filter(Boolean)))];
 
   const filteredPoetry = poetryItems.filter(item => {
-    const matchesType = selectedType === "All" || item.type === selectedType;
-    const matchesTheme = selectedTheme === "All" || item.theme === selectedTheme;
-    const matchesCommunity = selectedCommunity === "All" || item.community === selectedCommunity;
+    const matchesCommunity = selectedCommunity === "All" || item.tribe === selectedCommunity;
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.poet.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesType && matchesTheme && matchesCommunity && matchesSearch;
+                         item.content.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCommunity && matchesSearch;
   });
 
   return (
@@ -93,40 +108,18 @@ const Poetry = () => {
               />
             </div>
             
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="flex gap-2 items-center">
-                <span className="text-sm font-medium text-muted-foreground">Type:</span>
-                <div className="flex gap-1 flex-wrap">
-                  {types.slice(0, 4).map((type) => (
-                    <Button
-                      key={type}
-                      variant={selectedType === type ? "ubuntu" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedType(type)}
-                      className="text-xs"
-                    >
-                      {type}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="flex gap-2 items-center">
-                <span className="text-sm font-medium text-muted-foreground">Theme:</span>
-                <div className="flex gap-1 flex-wrap">
-                  {themes.map((theme) => (
-                    <Button
-                      key={theme}
-                      variant={selectedTheme === theme ? "heritage" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedTheme(theme)}
-                      className="text-xs"
-                    >
-                      {theme}
-                    </Button>
-                  ))}
-                </div>
-              </div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {communities.map((community) => (
+                <Button
+                  key={community}
+                  variant={selectedCommunity === community ? "ubuntu" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCommunity(community)}
+                  className="text-xs"
+                >
+                  {community}
+                </Button>
+              ))}
             </div>
           </div>
         </div>
@@ -135,93 +128,64 @@ const Poetry = () => {
       {/* Poetry Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPoetry.map((item, index) => (
-              <Card 
-                key={item.id} 
-                className="group hover:shadow-xl transition-all duration-300 border-ubuntu/20 hover-scale animate-fade-in"
-                style={{"--stagger": index} as React.CSSProperties}
-              >
-                <CardContent className="p-0">
-                  <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img 
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-heritage-black/60 to-transparent"></div>
-                    <div className="absolute top-4 right-4">
-                      <span className="px-2 py-1 text-xs font-semibold bg-ubuntu/20 text-ubuntu rounded-full">
-                        {item.type}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-4 left-4">
-                      <div className="text-card font-bold text-lg">{item.title}</div>
-                      <div className="text-card/80 text-sm">{item.community}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-ubuntu" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPoetry.map((item, index) => (
+                <Card 
+                  key={item.id} 
+                  className="group hover:shadow-xl transition-all duration-300 border-ubuntu/20 hover-scale animate-fade-in"
+                  style={{"--stagger": index} as React.CSSProperties}
+                >
+                  <CardContent className="p-6">
                     <div className="mb-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold bg-heritage-green/20 text-heritage-green rounded-full">
-                          {item.theme}
+                      <div className="flex items-center gap-2 mb-3">
+                        {item.tribe && (
+                          <span className="inline-block px-3 py-1 text-xs font-semibold bg-heritage-green/20 text-heritage-green rounded-full">
+                            {item.tribe}
+                          </span>
+                        )}
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(item.created_at).toLocaleDateString()}
                         </span>
-                        <span className="text-xs text-muted-foreground">{item.duration}</span>
                       </div>
                       
-                      <h3 className="text-lg font-bold text-heritage-brown mb-1">
+                      <h3 className="text-lg font-bold text-heritage-brown mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
-                        By {item.poet} • {item.language}
-                      </p>
-                    </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">
-                      {item.description}
-                    </p>
-
-                    <div className="bg-muted/50 p-3 rounded-md mb-4">
-                      <p className="text-sm italic text-heritage-brown leading-relaxed">
-                        {item.excerpt}
-                      </p>
-                    </div>
-
-                    <div className="mb-4">
-                      <div className="text-xs text-muted-foreground mb-2">
-                        <strong>Occasion:</strong> {item.occasion}
-                      </div>
-                      <div className="flex gap-1 flex-wrap">
-                        {item.instruments.slice(0, 2).map((instrument) => (
-                          <span key={instrument} className="text-xs bg-ubuntu/10 text-ubuntu px-2 py-1 rounded">
-                            {instrument}
-                          </span>
-                        ))}
+                      <div className="bg-muted/50 p-3 rounded-md">
+                        <p className="text-sm italic text-heritage-brown leading-relaxed whitespace-pre-line line-clamp-6">
+                          {item.content}
+                        </p>
                       </div>
                     </div>
 
                     <div className="border-t border-border pt-4">
-                      <div className="flex gap-2">
-                        <Button variant="ubuntu" size="sm" className="flex-1 group-hover:scale-105 transition-transform">
-                          <Play className="mr-1 h-3 w-3" />
-                          Listen
-                        </Button>
-                        <Button variant="outline" size="sm" className="flex-1">
-                          <Mic className="mr-1 h-3 w-3" />
-                          Learn
-                        </Button>
-                      </div>
+                      <Button variant="ubuntu" size="sm" className="w-full group-hover:scale-105 transition-transform">
+                        <Play className="mr-1 h-3 w-3" />
+                        Read Full Poem
+                      </Button>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
-          {filteredPoetry.length === 0 && (
+          {!loading && filteredPoetry.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No poetry or songs found matching your criteria.</p>
+              <p className="text-muted-foreground text-lg mb-4">
+                {searchTerm || selectedCommunity !== "All" 
+                  ? "No poetry found matching your criteria." 
+                  : "No poetry has been published yet."}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Share your cultural poetry and songs!
+              </p>
             </div>
           )}
         </div>
@@ -239,13 +203,9 @@ const Poetry = () => {
             Each performance connects us to generations past and future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="heritage" size="lg">
+            <Button variant="heritage" size="lg" onClick={() => window.location.href = "/submit-content"}>
               <Music className="mr-2 h-5 w-5" />
               Submit Your Poetry
-            </Button>
-            <Button variant="elder" size="lg">
-              <Heart className="mr-2 h-5 w-5" />
-              Join Performance Circle
             </Button>
           </div>
         </div>

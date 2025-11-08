@@ -26,6 +26,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import ContentReview from "./pages/admin/ContentReview";
 import UserManagement from "./pages/admin/UserManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -35,38 +36,40 @@ const App = () => (
       <Toaster />
       
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/authors-dashboard" element={<AuthorsDashboard />} />
-            <Route path="/submit-content" element={<SubmitContent />} />
-          <Route path="/stories" element={<Stories />} />
-          <Route path="/ubuntu-voices" element={<UbuntuVoices />} />
-          <Route path="/poetry" element={<Poetry />} />
-          <Route path="/medicinal-plants" element={<MedicinalPlants />} />
-          <Route path="/heritage-map" element={<HeritageMap />} />
-          <Route path="/heroes" element={<Heroes />} />
-          <Route path="/learning-hub" element={<LearningHub />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/tribes/abagusii" element={<Abagusii />} />
-          <Route path="/tribes/akamba" element={<Akamba />} />
-          <Route path="/tribes/kalenjin" element={<Kalenjin />} />
-          <Route path="/tribes/maasai" element={<Maasai />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="content-review" element={<ContentReview />} />
-            <Route path="users" element={<UserManagement />} />
-            <Route path="settings" element={<AdminSettings />} />
-          </Route>
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+<BrowserRouter>
+  <ScrollToTop /> {/* This ensures the page scrolls to top on route change */}
+  <Routes>
+    <Route path="/" element={<LandingPage />} />
+    <Route path="/home" element={<HomePage />} />
+    <Route path="/auth" element={<AuthPage />} />
+    <Route path="/authors-dashboard" element={<AuthorsDashboard />} />
+    <Route path="/submit-content" element={<SubmitContent />} />
+    <Route path="/stories" element={<Stories />} />
+    <Route path="/ubuntu-voices" element={<UbuntuVoices />} />
+    <Route path="/poetry" element={<Poetry />} />
+    <Route path="/medicinal-plants" element={<MedicinalPlants />} />
+    <Route path="/heritage-map" element={<HeritageMap />} />
+    <Route path="/heroes" element={<Heroes />} />
+    <Route path="/learning-hub" element={<LearningHub />} />
+    <Route path="/articles" element={<Articles />} />
+    <Route path="/tribes/abagusii" element={<Abagusii />} />
+    <Route path="/tribes/akamba" element={<Akamba />} />
+    <Route path="/tribes/kalenjin" element={<Kalenjin />} />
+    <Route path="/tribes/maasai" element={<Maasai />} />
+
+    {/* Admin Routes */}
+    <Route path="/admin" element={<AdminLayout />}>
+      <Route index element={<AdminDashboard />} />
+      <Route path="content-review" element={<ContentReview />} />
+      <Route path="users" element={<UserManagement />} />
+      <Route path="settings" element={<AdminSettings />} />
+    </Route>
+
+    {/* Catch-all */}
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+</BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );

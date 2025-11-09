@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { BookOpen, Heart, ArrowRight, TrendingUp } from "lucide-react";
 import CountUp from "react-countup";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -95,7 +97,7 @@ const LandingPage = () => {
                 <Button
                   size="lg"
                   className="text-lg px-8 py-4 bg-gradient-to-r from-heritage-green to-heritage-red text-white shadow-lg transition-all duration-300 hover:scale-105"
-                  onClick={() => (window.location.href = "/home")}
+                  onClick={() => navigate("/home")}
                 >
                   Explore Our Heritage
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -105,7 +107,7 @@ const LandingPage = () => {
                   variant="outline"
                   size="lg"
                   className="text-lg px-8 py-4 border-heritage-red text-heritage-red transition-all duration-300 hover:bg-heritage-red hover:text-white hover:scale-105"
-                  onClick={() => (window.location.href = "/auth")}
+                  onClick={() => navigate("/auth")}
                 >
                   Share Your Story
                 </Button>

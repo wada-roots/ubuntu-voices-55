@@ -9,6 +9,7 @@ import {
   Settings,
   LogOut,
   Menu,
+  Home,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -94,10 +95,17 @@ const AdminLayout = () => {
   ];
 
   const Sidebar = () => (
-    <div className="flex flex-col h-full bg-sidebar border-r border-border">
+    <div className="flex flex-col h-full bg-card border-r border-border">
       <div className="p-6 border-b border-border">
-        <h1 className="text-2xl font-bold text-foreground">Admin Panel</h1>
-        <p className="text-sm text-muted-foreground mt-1">{user?.email}</p>
+        <div className="flex items-center gap-3 mb-2">
+          <img 
+            src="/images/branding/kenyan-flag.png"
+            alt="Kenyan Flag"
+            className="w-10 h-7 object-cover rounded-sm shadow-md border border-border"
+          />
+          <h1 className="text-xl font-bold text-foreground">Admin Panel</h1>
+        </div>
+        <p className="text-sm text-muted-foreground">{user?.email}</p>
       </div>
 
       <nav className="flex-1 p-4 space-y-2">
@@ -106,7 +114,7 @@ const AdminLayout = () => {
             key={item.name}
             to={item.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-heritage-red/10 hover:text-heritage-red transition-colors"
           >
             <item.icon className="h-5 w-5" />
             <span>{item.name}</span>
@@ -114,7 +122,15 @@ const AdminLayout = () => {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-2">
+        <Button
+          variant="ghost"
+          className="w-full justify-start gap-3"
+          onClick={() => navigate("/")}
+        >
+          <Home className="h-5 w-5" />
+          Home
+        </Button>
         <Button
           variant="ghost"
           className="w-full justify-start gap-3"
@@ -128,7 +144,7 @@ const AdminLayout = () => {
   );
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden bg-background">
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex md:w-64 md:flex-col">
         <Sidebar />
@@ -147,7 +163,7 @@ const AdminLayout = () => {
       </Sheet>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto bg-background">
+      <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>

@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
-import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus } from "lucide-react";
+import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle } from "lucide-react";
 
 interface ContentSubmission {
   id: string;
@@ -171,10 +171,6 @@ const AuthorsDashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <Button variant="heritage" onClick={() => navigate("/submit-content")} className="flex items-center gap-2">
-                <Plus className="h-4 w-4" />
-                New Submission
-              </Button>
               <Button variant="ghost" onClick={() => navigate("/")} className="flex items-center gap-2">
                 <Home className="h-4 w-4" />
                 Home
@@ -432,6 +428,7 @@ const AuthorsDashboard = () => {
         </div>
       </main>
     </div>
+    
   );
 };
 

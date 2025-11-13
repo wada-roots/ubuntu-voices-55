@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Play, Heart, Users } from "lucide-react";
 import CulturalCarousel from "./CulturalCarousel";
 
-
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-8 sm:py-12 lg:py-16">
@@ -80,7 +79,8 @@ const HeroSection = () => {
       {/* Floating Ubuntu Symbol */}
       <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 hidden lg:block">
         <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-ubuntu/20 backdrop-blur-sm flex items-center justify-center">
-          <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-ubuntu animate-pulse" />
+          {/* Removed animation */}
+          <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-ubuntu" />
         </div>
       </div>
     </section>

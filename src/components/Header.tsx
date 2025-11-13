@@ -66,6 +66,30 @@ const Header = () => {
             <a href="/heritage-map" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Places</a>
             <a href="/heroes" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Heroes</a>
             <a href="/learning-hub" className="text-foreground hover:text-primary transition-colors story-link text-sm xl:text-base">Learn</a>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-foreground hover:text-primary transition-colors story-link flex items-center gap-1 text-sm xl:text-base">
+                  Community <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg z-50">
+                <DropdownMenuItem asChild>
+                  <a href="/submit-content" className="w-full cursor-pointer text-foreground hover:bg-muted">Contribute Stories</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="/for-teachers" className="w-full cursor-pointer text-foreground hover:bg-muted">For Teachers</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="/researchers" className="w-full cursor-pointer text-foreground hover:bg-muted">Researchers</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="/about-us" className="w-full cursor-pointer text-foreground hover:bg-muted">About Us</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="/contact" className="w-full cursor-pointer text-foreground hover:bg-muted">Contact</a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Search and Author Login */}

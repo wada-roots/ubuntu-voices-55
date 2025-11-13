@@ -27,6 +27,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import ContentReview from "./pages/admin/ContentReview";
 import UserManagement from "./pages/admin/UserManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => (
     <Route path="/tribes/maasai" element={<Maasai />} />
 
     {/* Admin Routes */}
+    <Route path="/admin/login" element={<AdminLoginPage />} />
     <Route path="/admin" element={<AdminLayout />}>
       <Route index element={<AdminDashboard />} />
       <Route path="content-review" element={<ContentReview />} />

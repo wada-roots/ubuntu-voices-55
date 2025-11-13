@@ -35,8 +35,7 @@ const AdminLayout = () => {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        toast.error("Please log in to access this page");
-        navigate("/auth");
+        navigate("/admin/login");
         return;
       }
 
@@ -48,8 +47,7 @@ const AdminLayout = () => {
 
       if (error) {
         console.error("Error checking admin role:", error);
-        toast.error("Failed to verify admin access");
-        navigate("/");
+        navigate("/admin/login");
         return;
       }
 
@@ -58,12 +56,12 @@ const AdminLayout = () => {
 
       if (!hasAdminRole) {
         toast.error("Access denied. Admin privileges required.");
-        navigate("/");
+        navigate("/admin/login");
         return;
       }
     } catch (error) {
       console.error("Error in admin check:", error);
-      navigate("/");
+      navigate("/admin/login");
     } finally {
       setLoading(false);
     }

@@ -16,6 +16,10 @@ import MedicinalPlants from "./pages/MedicinalPlants";
 import HeritageMap from "./pages/HeritageMap";
 import Heroes from "./pages/Heroes";
 import LearningHub from "./pages/LearningHub";
+import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
+import ForTeachers from "./pages/ForTeachers";
+import Researchers from "./pages/Researchers";
 import NotFound from "./pages/NotFound";
 import Abagusii from "./pages/tribes/Abagusii";
 import Akamba from "./pages/tribes/Akamba";
@@ -53,6 +57,10 @@ const App = () => (
     <Route path="/heritage-map" element={<HeritageMap />} />
     <Route path="/heroes" element={<Heroes />} />
     <Route path="/learning-hub" element={<LearningHub />} />
+    <Route path="/about-us" element={<AboutUs />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/for-teachers" element={<ForTeachers />} />
+    <Route path="/researchers" element={<Researchers />} />
     <Route path="/articles" element={<Articles />} />
     <Route path="/tribes/abagusii" element={<Abagusii />} />
     <Route path="/tribes/akamba" element={<Akamba />} />

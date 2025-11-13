@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
-import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle } from "lucide-react";
+import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus } from "lucide-react";
 
 interface ContentSubmission {
   id: string;
@@ -196,9 +196,10 @@ const AuthorsDashboard = () => {
           </div>
 
           <Tabs defaultValue="submit" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="submit">Submit Content</TabsTrigger>
               <TabsTrigger value="submissions">My Submissions</TabsTrigger>
+              <TabsTrigger value="community">Community</TabsTrigger>
             </TabsList>
             
             <TabsContent value="submit">
@@ -419,6 +420,66 @@ const AuthorsDashboard = () => {
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="community">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MessageSquare className="h-5 w-5" />
+                  Connect with Other Authors
+                </CardTitle>
+                <CardDescription>
+                  View and discuss published content from fellow authors
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {loadingSubmissions ? (
+                  <div className="text-center py-8">
+                    <div className="text-muted-foreground">Loading community content...</div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {submissions
+                      .filter(s => s.status === 'published')
+                      .map((submission) => (
+                        <div key={submission.id} className="border border-border rounded-lg p-6 space-y-4">
+                          <div className="flex items-start justify-between">
+                            <div className="space-y-1 flex-1">
+                              <h3 className="font-semibold text-lg text-foreground">{submission.title}</h3>
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                {submission.content_type === 'story' && <BookOpen className="h-4 w-4" />}
+                                {submission.content_type === 'poem' && <PenTool className="h-4 w-4" />}
+                                {submission.content_type === 'article' && <FileText className="h-4 w-4" />}
+                                <span className="capitalize">{submission.content_type}</span>
+                                {submission.tribe && <span>• {submission.tribe}</span>}
+                                <span>• {new Date(submission.created_at).toLocaleDateString()}</span>
+                              </div>
+                            </div>
+                            <Badge className="bg-heritage-green">Published</Badge>
+                          </div>
+                          
+                          <div className="text-sm text-foreground/80">
+                            <p className="line-clamp-3">{submission.content}</p>
+                          </div>
+
+                          <ContentComments contentId={submission.id} user={user} />
+                        </div>
+                      ))}
+                    
+                    {submissions.filter(s => s.status === 'published').length === 0 && (
+                      <div className="text-center py-8">
+                        <UserIcon className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                        <p className="text-muted-foreground mb-2">No published content yet</p>
+                        <p className="text-sm text-muted-foreground">
+                          Published stories will appear here for community discussion
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>

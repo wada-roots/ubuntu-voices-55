@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -66,17 +66,37 @@ const ContentReview = () => {
     }
   };
 
+  const handlePublish = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('content_submissions')
+        .update({ status: 'published' })
+        .eq('id', id)
+        .eq('status', 'approved');
+
+      if (error) throw error;
+
+      toast.success("Content published successfully!");
+      loadSubmissions();
+    } catch (error) {
+      console.error("Error publishing content:", error);
+      toast.error("Failed to publish content");
+    }
+  };
+
   const getStatusBadge = (status: string) => {
     const config = {
       pending: { icon: Clock, variant: "secondary" as const, label: "Pending" },
       approved: { icon: CheckCircle, variant: "default" as const, label: "Approved" },
       rejected: { icon: XCircle, variant: "destructive" as const, label: "Rejected" },
+      published: { icon: CheckCircle, variant: "default" as const, label: "Published", className: "bg-heritage-green" },
     };
 
-    const { icon: Icon, variant, label } = config[status as keyof typeof config] || config.pending;
+    const statusConfig = config[status as keyof typeof config] || config.pending;
+    const { icon: Icon, variant, label, className } = statusConfig as any;
 
     return (
-      <Badge variant={variant} className="flex items-center gap-1">
+      <Badge variant={variant} className={`flex items-center gap-1 ${className || ''}`}>
         <Icon className="h-3 w-3" />
         {label}
       </Badge>
@@ -163,6 +183,18 @@ const ContentReview = () => {
                         Reject
                       </Button>
                     </div>
+                  </div>
+                )}
+
+                {submission.status === 'approved' && (
+                  <div className="pt-4 border-t">
+                    <Button
+                      onClick={() => handlePublish(submission.id)}
+                      className="w-full bg-heritage-green hover:bg-heritage-green/90"
+                    >
+                      <CheckCircle className="mr-2 h-4 w-4" />
+                      Publish to Main Dashboard
+                    </Button>
                   </div>
                 )}
               </CardContent>

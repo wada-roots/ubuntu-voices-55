@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
@@ -9,6 +9,7 @@ import {
   Settings,
   LogOut,
   Menu,
+  Home,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -34,8 +35,7 @@ const AdminLayout = () => {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        toast.error("Please log in to access this page");
-        navigate("/auth");
+        navigate("/admin/login");
         return;
       }
 
@@ -47,8 +47,7 @@ const AdminLayout = () => {
 
       if (error) {
         console.error("Error checking admin role:", error);
-        toast.error("Failed to verify admin access");
-        navigate("/");
+        navigate("/admin/login");
         return;
       }
 
@@ -57,12 +56,12 @@ const AdminLayout = () => {
 
       if (!hasAdminRole) {
         toast.error("Access denied. Admin privileges required.");
-        navigate("/");
+        navigate("/admin/login");
         return;
       }
     } catch (error) {
       console.error("Error in admin check:", error);
-      navigate("/");
+      navigate("/admin/login");
     } finally {
       setLoading(false);
     }
@@ -94,10 +93,17 @@ const AdminLayout = () => {
   ];
 
   const Sidebar = () => (
-    <div className="flex flex-col h-full bg-sidebar border-r border-border">
+    <div className="flex flex-col h-full bg-card border-r border-border">
       <div className="p-6 border-b border-border">
-        <h1 className="text-2xl font-bold text-foreground">Admin Panel</h1>
-        <p className="text-sm text-muted-foreground mt-1">{user?.email}</p>
+        <div className="flex items-center gap-3 mb-2">
+          <img 
+            src="/images/branding/kenyan-flag.png"
+            alt="Kenyan Flag"
+            className="w-10 h-7 object-cover rounded-sm shadow-md border border-border"
+          />
+          <h1 className="text-xl font-bold text-foreground">Admin Panel</h1>
+        </div>
+        <p className="text-sm text-muted-foreground">{user?.email}</p>
       </div>
 
       <nav className="flex-1 p-4 space-y-2">
@@ -106,7 +112,7 @@ const AdminLayout = () => {
             key={item.name}
             to={item.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-heritage-red/10 hover:text-heritage-red transition-colors"
           >
             <item.icon className="h-5 w-5" />
             <span>{item.name}</span>
@@ -114,7 +120,15 @@ const AdminLayout = () => {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-2">
+        <Button
+          variant="ghost"
+          className="w-full justify-start gap-3"
+          onClick={() => navigate("/")}
+        >
+          <Home className="h-5 w-5" />
+          Home
+        </Button>
         <Button
           variant="ghost"
           className="w-full justify-start gap-3"
@@ -128,7 +142,7 @@ const AdminLayout = () => {
   );
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden bg-background">
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex md:w-64 md:flex-col">
         <Sidebar />
@@ -147,7 +161,7 @@ const AdminLayout = () => {
       </Sheet>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto bg-background">
+      <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>

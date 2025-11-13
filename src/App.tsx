@@ -1,3 +1,4 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,10 @@ import MedicinalPlants from "./pages/MedicinalPlants";
 import HeritageMap from "./pages/HeritageMap";
 import Heroes from "./pages/Heroes";
 import LearningHub from "./pages/LearningHub";
+import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
+import ForTeachers from "./pages/ForTeachers";
+import Researchers from "./pages/Researchers";
 import NotFound from "./pages/NotFound";
 import Abagusii from "./pages/tribes/Abagusii";
 import Akamba from "./pages/tribes/Akamba";
@@ -26,6 +31,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import ContentReview from "./pages/admin/ContentReview";
 import UserManagement from "./pages/admin/UserManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -51,6 +57,10 @@ const App = () => (
     <Route path="/heritage-map" element={<HeritageMap />} />
     <Route path="/heroes" element={<Heroes />} />
     <Route path="/learning-hub" element={<LearningHub />} />
+    <Route path="/about-us" element={<AboutUs />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/for-teachers" element={<ForTeachers />} />
+    <Route path="/researchers" element={<Researchers />} />
     <Route path="/articles" element={<Articles />} />
     <Route path="/tribes/abagusii" element={<Abagusii />} />
     <Route path="/tribes/akamba" element={<Akamba />} />
@@ -58,6 +68,7 @@ const App = () => (
     <Route path="/tribes/maasai" element={<Maasai />} />
 
     {/* Admin Routes */}
+    <Route path="/admin/login" element={<AdminLoginPage />} />
     <Route path="/admin" element={<AdminLayout />}>
       <Route index element={<AdminDashboard />} />
       <Route path="content-review" element={<ContentReview />} />

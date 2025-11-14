@@ -31,49 +31,51 @@ const AuthPage = () => {
   // ✅ Watch for existing sessions and redirect based on user role
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         const user = session?.user;
-        if (!user) return;
-
-        // Get user role from Supabase
-        const { data: roleData } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", user.id)
-          .single();
-
-        if (roleData?.role === "admin") {
-          navigate("/admin");
-        } else if (roleData?.role === "author") {
-          navigate("/authors-dashboard");
-        } else {
-          navigate("/");
+        if (!user) {
+          setUser(null);
+          return;
         }
+
+        setUser(user);
+
+        // Defer role checking to avoid deadlock
+        setTimeout(() => {
+          checkUserRoleAndRedirect(user.id);
+        }, 0);
       }
     );
 
     // Check for an existing session when the page loads
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
       const user = session?.user;
-      if (!user) return;
-
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
-
-      if (roleData?.role === "admin") {
-        navigate("/admin");
-      } else if (roleData?.role === "author") {
-        navigate("/authors-dashboard");
-      } else {
-        navigate("/");
+      if (user) {
+        setUser(user);
+        checkUserRoleAndRedirect(user.id);
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  const checkUserRoleAndRedirect = async (userId: string) => {
+    try {
+      const { data: roles } = await supabase.rpc('get_user_roles', { 
+        _user_id: userId 
+      });
+
+      if (roles && roles.includes('admin')) {
+        navigate("/admin");
+      } else if (roles && roles.includes('author')) {
+        navigate("/authors-dashboard");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error checking user role:", error);
+    }
+  };
 
   // ✅ Sign-up logic
   const handleSignUp = async (e: React.FormEvent) => {
@@ -134,30 +136,10 @@ const AuthPage = () => {
         return;
       }
 
-      // ✅ Fetch user role
-      const { data: roleData, error: roleError } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
+      setUser(user);
+      toast.success("Signed in successfully!");
 
-      if (roleError) {
-        console.error("Error fetching role:", roleError);
-        toast.error("Could not determine user role.");
-        return;
-      }
-
-      // ✅ Redirect based on role
-      if (roleData?.role === "admin") {
-        toast.success("Welcome, Admin!");
-        navigate("/admin");
-      } else if (roleData?.role === "author") {
-        toast.success("Welcome back!");
-        navigate("/authors-dashboard");
-      } else {
-        toast.error("You don't have permission to access this area.");
-        navigate("/");
-      }
+      // Role-based redirect will be handled by onAuthStateChange
     } catch (error) {
       console.error(error);
       toast.error("An unexpected error occurred");

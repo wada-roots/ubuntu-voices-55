@@ -11,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
-import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus } from "lucide-react";
+import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus, MessageSquare, User as UserIcon } from "lucide-react";
+import ContentComments from "@/components/ContentComments";
 
 interface ContentSubmission {
   id: string;

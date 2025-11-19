@@ -11,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
-import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus } from "lucide-react";
+import { PenTool, BookOpen, FileText, LogOut, Home, Eye, Clock, CheckCircle, XCircle, Plus, MessageSquare, UserIcon } from "lucide-react";
+import ContentComments from "@/components/ContentComments";
 
 interface ContentSubmission {
   id: string;
@@ -329,7 +330,7 @@ const AuthorsDashboard = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Review Process:</h4>
                   <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    <li>Content reviewed within 3-5 business days</li>
+                    <li>Content reviewed within 2 business days</li>
                     <li>Feedback provided if changes needed</li>
                     <li>Published content credited to author</li>
                     <li>Community engagement encouraged</li>

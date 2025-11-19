@@ -79,7 +79,7 @@ const LandingPage = () => {
               >
                 Sauti Za{" "}
                 <span className="bg-gradient-wisdom bg-clip-text text-transparent block">
-                  Kale Afrika
+                  Kale Africa
                 </span>
               </motion.h1>
 

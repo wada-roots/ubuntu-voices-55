@@ -18,7 +18,7 @@ const Footer = () => {
                 className="w-12 h-8 rounded-sm shadow-md"
               />
               <div>
-                <h3 className="text-xl font-bold">Sauti Za Kale Afrika</h3>
+                <h3 className="text-xl font-bold">Sauti Za Kale Africa</h3>
                 <p className="text-sm text-card/80">Preserving Africa's Heritage</p>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-card/20 pt-8 text-center">
           <p className="text-card/60 text-sm">
-            © 2025 Sauti Za Kale Afrika. Preserving Africa's heritage for future generations.
+            © 2025 Sauti Za Kale Africa. Preserving Africa's heritage for future generations.
           </p>
           <p className="text-card/60 text-xs mt-2">
             Built By DMS

@@ -59,20 +59,19 @@ const AdminLoginPage = () => {
         return;
       }
 
-      // Verify admin role
-      const { data: roleData, error: roleError } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
+      // Verify admin role using RPC function
+      const { data: roles, error: roleError } = await supabase.rpc('get_user_roles', {
+        _user_id: user.id
+      });
 
-      if (roleError || !roleData) {
+      if (roleError) {
+        console.error("Error checking admin role:", roleError);
         await supabase.auth.signOut();
         toast.error("Access denied. Admin privileges required.");
         return;
       }
 
-      if (roleData.role !== "admin") {
+      if (!roles || !roles.includes('admin')) {
         await supabase.auth.signOut();
         toast.error("Access denied. Admin privileges required.");
         return;

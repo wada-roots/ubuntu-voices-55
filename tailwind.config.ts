@@ -48,6 +48,8 @@ export default {
           green: "hsl(var(--heritage-green))",
           red: "hsl(var(--heritage-red))",
           black: "hsl(var(--heritage-black))",
+          gold: "hsl(var(--heritage-gold))",
+          earth: "hsl(var(--heritage-earth))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -74,9 +76,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
-        'gradient-earth': 'var(--gradient-earth)',
-        'gradient-heritage': 'var(--gradient-heritage)',
-        'gradient-wisdom': 'var(--gradient-wisdom)',
+        'gradient-earth': 'linear-gradient(135deg, hsl(var(--heritage-brown)), hsl(var(--heritage-earth)))',
+        'gradient-heritage': 'linear-gradient(135deg, hsl(var(--heritage-red)), hsl(var(--heritage-green)))',
+        'gradient-wisdom': 'linear-gradient(135deg, hsl(var(--ubuntu)), hsl(var(--heritage-gold)))',
+        'gradient-sacred': 'linear-gradient(135deg, hsl(var(--heritage-green)), hsl(var(--heritage-earth)))',
+        'gradient-warm': 'linear-gradient(120deg, hsl(var(--heritage-gold)), hsl(var(--ubuntu)))',
       },
       keyframes: {
         "accordion-down": {
